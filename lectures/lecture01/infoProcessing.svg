@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="301.00003"
+   height="38.500004"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="infoProcessing.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3899"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3824">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3826" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3828" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3824"
+       id="radialGradient3832"
+       cx="126.71118"
+       cy="134.1703"
+       fx="126.71118"
+       fy="134.1703"
+       r="23.834717"
+       gradientTransform="matrix(1,0,0,0.81160949,0,25.276411)"
+       gradientUnits="userSpaceOnUse" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3899-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="199.19909"
+     inkscape:cy="-6.6805799"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       units="mm"
+       empspacing="10"
+       dotted="true"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-83.874992"
+       originy="-899.5"
+       spacingx="0.9375"
+       spacingy="0.9375" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="1. réteg"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-83.874992,-114.36219)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2987"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;enable-background:accumulate"
+       transform="translate(-6.5345573,7.904475)"><flowRegion
+         id="flowRegion2989"
+         style="stroke:url(#radialGradient3832)"><rect
+           id="rect2991"
+           width="58.76265"
+           height="47.086613"
+           x="97.14286"
+           y="112.36218"
+           style="text-align:center;text-anchor:middle;stroke:none" /></flowRegion><flowPara
+         id="flowPara2993"
+         style="font-size:11px;line-height:1.25;stroke:none" /><flowPara
+         id="flowPara2995"
+         style="font-size:11px;line-height:1.25;stroke:none">Input</flowPara><flowPara
+         id="flowPara2997"
+         style="font-size:11px;line-height:1.25;stroke:none">devices</flowPara></flowRoot>    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.99999988;stroke-opacity:1"
+       id="rect3837"
+       width="71.53051"
+       height="37.500004"
+       x="84.374992"
+       y="114.86219" />
+    <flowRoot
+       transform="translate(221.41822,7.975497)"
+       xml:space="preserve"
+       id="flowRoot2987-7"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;enable-background:accumulate"><flowRegion
+         id="flowRegion2989-9"><rect
+           id="rect2991-4"
+           width="58.76265"
+           height="47.086613"
+           x="97.14286"
+           y="112.36218"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         style="font-size:11px;line-height:1.25"
+         id="flowPara2995-5">Output</flowPara><flowPara
+         style="font-size:11px;line-height:1.25"
+         id="flowPara2997-5">devices</flowPara></flowRoot>    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.99999994;stroke-opacity:1"
+       id="rect3837-5"
+       width="72.56398"
+       height="37.500004"
+       x="311.81104"
+       y="114.86219" />
+    <flowRoot
+       transform="translate(85.030143,3.339999)"
+       xml:space="preserve"
+       id="flowRoot2987-9"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;enable-background:accumulate"><flowRegion
+         id="flowRegion2989-4"><rect
+           id="rect2991-1"
+           width="85.039375"
+           height="28.34647"
+           x="106.29922"
+           y="116.92912"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         style="font-size:11px;line-height:1.25"
+         id="flowPara2997-6">Computer</flowPara><flowPara
+         style="font-size:11px;line-height:1.25"
+         id="flowPara3054">(with storages)</flowPara></flowRoot>    <rect
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1"
+       id="rect3837-0"
+       width="99.212601"
+       height="37.500004"
+       x="184.24274"
+       y="114.86219" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 155.90551,134.64565 h 28.34646"
+       id="path3890"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 283.46456,134.64565 h 28.34646"
+       id="path3890-8"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
