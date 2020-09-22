@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdbool.h>
 int main(void) {
   int a, b, c;
-  bool valid = false; // boolean (logical) type
+  int valid = 0; // logical false
   printf("Enter the sides of a triangle!\n");
   do {
     do { // start of the loop body
@@ -17,10 +16,10 @@ int main(void) {
       printf("Length of side C: ");
       scanf("%d", &c);
     } while(c <= 0);
-    if(a+b<=c || b+c<=a || c+a<=b) // logical OR
+    if(a+b<=c || b+c<=a || c+a<=b) // or --> ||
       printf("The triangle is invalid!\n");
     else {
-      valid = true;
+      valid = 1; // logical true
       printf("The triangle is valid.\n"); }
-  } while(!valid);
+  } while(!valid); // not --> !
   return 0; }
