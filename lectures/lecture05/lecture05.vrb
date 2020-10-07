@@ -1,0 +1,17 @@
+\frametitle{Calculating the surface and volume of a cylinder}
+Main properties of \kiemel{integer} literals
+  \begin{itemize}
+    \item can be given in decimal, octal (\texttt{0}\dots) and hexadecimal (\texttt{0x}\dots, \texttt{0X}\dots) form
+    \item suffixes to change the internal storage type:
+    \begin{itemize}
+      \item \texttt{u}, \texttt{U} (unsigned)
+      \item \texttt{l}, \texttt{L} (long)
+    \end{itemize}
+  \end{itemize}
+  \begin{exampleblock}{Integer variables and literals}
+    \begin{verbatim}
+int i = 1;                unsigned ui = 8u;
+int j = 010;  /* == 8 */  long li = 16L;
+int k = 0x2A; /* == 42 */ unsigned long uli = 666Ul;
+\end{verbatim}
+  \end{exampleblock}
