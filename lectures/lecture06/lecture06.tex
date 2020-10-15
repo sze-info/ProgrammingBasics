@@ -212,110 +212,112 @@ embedding.c:3:3: warning: ISO C forbids nested functions [-Wpedantic]\\
   \end{description}
 \end{frame}
 
-%~ %14
-%~ \begin{frame}{Mintapélda függvények használatára}
-  %~ Megvalósítandó szolgáltatások (függvények):
-  %~ \vfill
-  %~ \begin{description}[mm]
-    %~ \item[Beolvasás] Beolvasandó $n$ és $k$ értéke
-    %~ \item[Főprogram] Adatok beolvasása, ${n \choose k}$ megjelenítése
-  %~ \end{description}
-  %~ \vfill
-  %~ \begin{center}
-    %~ \includegraphics{nk.pdf}
-  %~ \end{center}
-%~ \end{frame}
+%14
+\begin{frame}{Function usage example}
+  Services (functions) to be implemented:
+  \vfill
+  \begin{description}[mm]
+    \item[Read] The value of $n$ and $k$ must be read
+    \item[Main] Reading data, displaying ${n \choose k}$
+  \end{description}
+  \vfill
+  \begin{center}
+    \includegraphics{nk.pdf}
+  \end{center}
+\end{frame}
 
-%~ %15
-%~ \begin{frame}{Mintapélda függvények használatára}
-  %~ \begin{center}
-    %~ \includegraphics[scale=0.75]{nk2.pdf}
-  %~ \end{center}
-%~ \end{frame}
+%15
+\begin{frame}{Function usage example}
+  \begin{center}
+    \includegraphics[scale=0.75]{nk2.pdf}
+  \end{center}
+\end{frame}
 
-%~ %16
-%~ \begin{frame}{Mintapélda függvények használatára}
-  %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={1-16},numbers=left]{nk1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%16
+\begin{frame}{Function usage example}
+  \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+    \small
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={1-16},numbers=left]{nk1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-%~ %17
-%~ \begin{frame}{Mintapélda függvények használatára}
-  %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
-    %~ \fontsize{8}{9} \selectfont
-    %~ \lstinputlisting[style=c,firstline=17,numbers=left,firstnumber=17]{nk1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%17
+\begin{frame}{Function usage example}
+  \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+    \fontsize{8}{9} \selectfont
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,firstline=17,numbers=left,firstnumber=17]{nk1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-%~ %18
-%~ \begin{frame}{Fogalmak -- élettartam}
-  %~ \kiemel{Élettartam} (lifetime, duration): az a \emph{periódus a futásidő alatt}, amíg a változó/függvény létezik, memóriát 
-%~ foglal. Típusai:
-  %~ \begin{itemize}
-    %~ \item Statikus
-    %~ \begin{itemize}
-      %~ \item Futás kezdetétől végéig foglal memóriát
-      %~ \item Összes függvény, és \emph{globális} (függvényeken kívül deklarált) változó ilyen
-      %~ \item Globális változók implicit inicializálása: minden bit zérus értékű
-      %~ \item Lehetőleg \kiemel{kerülni kell a globális változók használatát}
-      %~ \begin{itemize}
-        %~ \item[$+$] Paraméter-átadás költsége megtakarítható
-        %~ \item[$-$] Nehézkes újrahasznosíthatóság, rugalmatlan, környezetfüggő kód, névütközések veszélye, \dots
-      %~ \end{itemize}
-    %~ \end{itemize}
-  %~ \end{itemize}
-%~ \end{frame}
+%18
+\begin{frame}{Properties -- lifetime}
+  \kiemel{Lifetime} (duration): \emph{a period during runtime} when the variable/function exists, allocates memory.
+  Types:
+  \begin{itemize}
+    \item Static
+    \begin{itemize}
+      \item From the beginning of program execution to its end
+      \item All functions and \emph{global} variables (declared outside functions) have static lifetime
+      \item Global variables are implicitely initialized: all bits are set to zero
+      \item Preferably the usage of global variables \kiemel{should be avoided}
+      \begin{itemize}
+        \item[$+$] Time of parameter-passing can be saved
+        \item[$-$] Hard to reuse code snippets, inflexible, environment-dependent code, danger of name conflicts, \dots
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
-%~ %19
-%~ \begin{frame}{Fogalmak -- élettartam}
-  %~ \begin{columns}[T]
-    %~ \column{0.5\textwidth}
-      %~ \begin{itemize}
-      %~ \small
-      %~ \item Lokális
-      %~ \begin{itemize}
-        %~ \item blokkba belépéstől annak elhagyásáig rendelnek memóriát hozzájuk
-        %~ \item függvényparaméterek, vezérlési szerkezetek definíciói is ilyenek
-        %~ \item csak explicit inicializáció történhet
-      %~ \end{itemize}
-    %~ \end{itemize}
-    %~ \column{0.5\textwidth}
-      %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
-        %~ \tiny
-        %~ \lstinputlisting[style=c,firstline=17,lastline=25,numbers=right,firstnumber=17]{nk1.c}
-      %~ \end{exampleblock}
-  %~ \end{columns}
-  %~ \vfill
-  %~ \scriptsize
-  %~ Élettartamok (C99):
-  %~ \begin{description}[]
-    %~ \item[faktorialis] program teljes futásideje alatt létezik
-    %~ \item[$n$] 3 fv. hívás miatt 3x létrejön a fv. hívásakor/megszűnik visszatéréskor (18 v. 23. sor)
-    %~ \item[$f$] létrejön ha $n$ elég nagy, és megszűnik amikor a végrehajtás a 23. sorhoz ér
-    %~ \item[$i$] a 20. sor elérése pillanatában jön létre, és a ciklusból kilépéskor felszabadul
-  %~ \end{description}
-%~ \end{frame}
+%19
+\begin{frame}{Properties -- lifetime}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{itemize}
+      \small
+      \item Local
+      \begin{itemize}
+        \item Allocates memory from entering the block until leaving it
+        \item Function arguments, variables defined inside blocks (eg. in a block of an \texttt{if} statement) have local lifetime
+        \item Only explicit initialization is possible
+      \end{itemize}
+    \end{itemize}
+    \column{0.5\textwidth}
+      \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+        \tiny
+        \lstinputlisting[style=c,linerange={17-25},numbers=right,firstnumber=17]{nk1.c}
+      \end{exampleblock}
+  \end{columns}
+  \vfill
+  \scriptsize
+  Lifetimes (C99):
+  \begin{description}[]
+    \item[factorial] exists during total program lifetime
+    \item[$n$] occupies memory 3x at the time of 3 function calls and frees memory at return (lines 18 and 23)
+    \item[$f$] occupies memory if $n$ is great enough and cease at the moment of executing line 23
+    \item[$i$] occupies memory from reaching line 20 and cease when leaving the loop
+  \end{description}
+\end{frame}
 
-%~ %20
-%~ \begin{frame}{Fogalmak -- hatáskör}
-  %~ \kiemel{Hatáskör} (érvényességi tartomány, hatókör, scope): meghatározza, hogy az objektumot a program \emph{mely részén} 
-%~ lehet elérni;
-%~ deklarációtól és annak helyétől függően:
-  %~ \begin{itemize}
-    %~ \item Blokk (lokális, belső)
-    %~ \begin{itemize}
-      %~ \item Deklarációtól a tartalmazó blokk végéig, beleértve a beágyazott blokkokat is
-      %~ \item Pl. függvény formális paraméterei, lokális változói
-    %~ \end{itemize}
-    %~ \item Fájl (globális, külső)
-    %~ \begin{itemize}
-      %~ \item minden függvény testén kívül deklarált azonosítók; deklarációs ponttól a fájl végéig
-      %~ \item Pl. függvények, globális változók
-    %~ \end{itemize}
-  %~ \end{itemize}
-%~ \end{frame}
+%20
+\begin{frame}{Properties -- scope}
+  \kiemel{Scope} a possibly discontinuous portion of the source code where a name can be used.
+  \begin{itemize}
+    \item Block (local)
+    \begin{itemize}
+      \item From the declaration to the end of the block it was defined, including embedded blocks, too.
+      \item Eg. formal parameters of a function and its local variables
+    \end{itemize}
+    \item File (global)
+    \begin{itemize}
+      \item Functions and all identifiers declared outside of functions; from the point of declaration to the end of the file
+      \item Eg. functions, global variables
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 %~ %21
 %~ \begin{frame}{Fogalmak -- láthatóság}
