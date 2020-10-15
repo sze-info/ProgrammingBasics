@@ -1,0 +1,388 @@
+\documentclass[usenames,dvipsnames,aspectratio=169]{beamer}
+\usepackage{../common/prgBasics}
+
+\title[Lecture 6.]{Programming basics}
+\subtitle{(GKNB\_INTA023)}
+
+\begin{document}
+
+%1
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%2
+\begin{frame}{Functions}
+  What is a \emph{function}?
+  \begin{itemize}
+    \item[] An identifiable and reusable block of the source code. Its behavior can be influenced by parameters.
+  \end{itemize}
+  Why do we use functions?
+  \begin{itemize}
+    \item Long source codes can be made more transparent and comprehesible by grouping the related lines of source code in functions (modularity)
+    \item Functions can be reused (called, invoked) several times instead of copy and paste code snippets (decreasing code size)
+    \begin{itemize}
+      \item They can be applied in one, specific program to avoid the repetition of code fractions
+      \item or even in multiple programs to avoid the repeated preparation of frequently used code snippets (eg. \texttt{sqrt}, \texttt{printf})
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%3
+\begin{frame}{Functions}
+  Function \emph{definition}
+  \begin{itemize}
+    \item Providing all formal information about the function: type of the return value, name (identifier), arguments (formal parameters: variables that are going to store parameter values given at function call), body of the function (inside curly braces, see eg. \texttt{main}).
+    \item Functions can be defined exactly once.
+    \item Definitions can be placed in source codes or in precompiled libraries.
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{absolute3.c}{absolute3.c}}
+    \small
+    \lstinputlisting[firstline=3,lastline=5,firstnumber=3,numbers=left]{absolute3.c}
+  \end{exampleblock}
+\end{frame}
+
+%4
+\begin{frame}{Functions}
+  Function call
+  \begin{itemize}
+    \item The function must be known at the place of call
+    \item Passing control and (actual) parameters
+    \item Call by \emph{value}
+    \item Returning program control and providing return value: \texttt{return}
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{absolute3.c}{absolute3.c}}
+    \footnotesize
+    \vspace{-.3cm}
+    \lstinputlisting[firstline=7,lastline=17,firstnumber=7,numbers=left]{absolute3.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
+
+%5
+\begin{frame}{Functions}
+  Return value
+  \begin{itemize}
+    \item Return type \kiemel{cannot be an array}
+    \item Expression after \texttt{return}: \emph{assignment} conversion (a kind of implicit type conversion) may be required
+    \item \texttt{void}: expresses the lack of return value (``procedure'')
+  \end{itemize}
+  Formal parameters (arguments)
+  \begin{itemize}
+    \item No information about the number of arguments: \texttt{int main() \{...\}}
+    \item No arguments: \texttt{int main(void) \{...\}}
+    \item One parameter: \texttt{double absolute(double number) \{...\}}
+    \item Two parameters: \\ \texttt{double power(double base, double exponent) \{...\}}
+    \item Actual parameters $\to$ \emph{assignment} conversion $\to$ formal parameters
+    \item Passing an array is a special case
+  \end{itemize}
+\end{frame}
+
+%6
+\begin{frame}{Functions}
+  \small
+  The body of a function may contain everything that was allowed in the body of \texttt{main}, i.e.:
+  \begin{itemize}
+    \small
+    \item Variable declarations
+    \item References to items declared outside of the block
+    \item Statements of activities
+  \end{itemize}
+  \small
+  Returning from the function
+  \begin{itemize}
+    \small
+    \item at the end of the function
+    \item with a \texttt{return} statement (a function may contain several \texttt{return}-s)
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{search.c}{search.c} -- Searching for the first occurrence of a character in a string}
+    \footnotesize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={3-9},firstnumber=3]{search.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
+
+%7
+\begin{frame}{Functions}
+  The definitions of functions \kiemel{cannot be embedded}! (Except GCC, non-standard extension)
+  \begin{exampleblock}{\textattachfile{embedding.c}{embedding.c}}
+    \small
+    \vspace{-.3cm}
+    \lstinputlisting[style=c]{embedding.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+  \begin{block}{Compilation error (GCC: warning)}
+    \scriptsize
+embedding.c: In function ‘main’:\\
+embedding.c:3:3: warning: ISO C forbids nested functions [-Wpedantic]\\
+   double absolute(double number) \{\\
+  \end{block}
+\end{frame}
+
+%8
+\begin{frame}{Assignment conversion}
+  Occurrences: when assigning a value to a variable, eg.
+  \begin{itemize}
+    \item converting the return value of a function\\
+    \begin{exampleblock}{\textattachfile{search.c}{search.c} \texttt{unsigned int} $\to$ \texttt{signed int}}
+      \lstinputlisting[style=c,linerange={3-9},firstnumber=3]{search.c}
+    \end{exampleblock}
+  \end{itemize}
+\end{frame}
+
+%9
+\begin{frame}{Assignment conversion}
+  Occurrences: when assigning a value to a variable, eg.
+  \begin{itemize}
+    \item when using the \texttt{?:} operator
+    \begin{exampleblock}{\textattachfile{uppercase.c}{uppercase.c} \texttt{int} $\to$ \texttt{char}}
+      \lstinputlisting[style=c,linerange={4-10},firstnumber=4]{uppercase.c}
+    \end{exampleblock}
+  \end{itemize}
+\end{frame}
+
+%10
+\begin{frame}{Assignment conversion}
+  Occurrences: when assigning a value to a variable, eg.
+  \begin{itemize}
+    \item when converting the actual parameter of a function
+    \begin{exampleblock}{\textattachfile{absolute3.c}{absolute3.c} \texttt{int} $\to$ \texttt{double}}
+      \lstinputlisting[style=c,linerange={3-5},firstnumber=3]{absolute3.c}
+    \end{exampleblock}
+    \begin{exampleblock}{}
+      \lstinputlisting[style=c,linerange={13-13},firstnumber=13]{absolute3.c}
+    \end{exampleblock}
+  \end{itemize}
+\end{frame}
+
+%11
+\begin{frame}{Assignment conversion}
+  Details: \hiv{\href{https://www.oreilly.com/library/view/c-in-a/0596006977/ch04.html}{C in a Nutshell}}\\
+  Some examples:
+  \begin{table}
+    \begin{tabular}{lll}
+    From      & To       & Outcome                 \\ \hline
+    signed+   & unsigned & \kiemelZ{\checkmark}    \\
+    signed$-$ & unsigned & \kiemel{loss of sign}   \\
+    long int  & int      & danger of loss of value \\
+    int       & double   & danger of loss of precision \\
+    float     & double   & \kiemelZ{\checkmark}    \\
+    double    & float    & danger of loss of precision \\
+    double    & int      & \kiemel{truncatenation of the fraction part} \\
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+%12
+\begin{frame}{Function usage example}
+  Services (functions) to be implemented:
+  \vfill
+  \begin{description}[mm]
+    \item[Combination] A \emph{k-combination} of a set $S$ is a subset of $k$ distinct elements of $S$. If the set has $n$ elements, the number of \emph{k-combinations} is equal to
+    \vfill
+    $C_n^k = \frac{n!}{(n-k)!k!} = {n \choose k}$\\
+    \vfill
+    Example: given \emph{three} fruits (say an \kiemelZ{apple}, a \kiemelN{pear}, and a \kiemel{peach}) how many combinations of \emph{two} can be drawn from this set?
+    \begin{enumerate}
+      \item \kiemelZ{apple}, \kiemelN{pear}
+      \item \kiemelZ{apple}, \kiemel{peach}
+      \item \kiemelN{pear}, \kiemel{peach}
+    \end{enumerate}
+  \end{description}
+\end{frame}
+
+%13
+\begin{frame}{Function usage example}
+  Services (functions) to be implemented:
+  \begin{description}[mm]
+    \item[Factorial] The factorial of a positive integer $n$, denoted by $n!$, is the product of all positive integers less than or equal to $n$.\\
+    $n! = \prod_{k=1}^{n}k$ for all $n \geq 0$ numbers.\\
+    $0! = 1$ according to convention.\\
+    Most basic use $\to$ Permutation: the number of possible distinct sequences of $n$ distinct objects.\\
+    Example: how many distinct sequences of three distinct fruits (say an \kiemelZ{apple}, a \kiemelN{pear} and a \kiemel{peach}) can be created?
+    \begin{enumerate}
+      \item \kiemelZ{apple}, \kiemelN{pear}, \kiemel{peach}
+      \item \kiemelZ{apple}, \kiemel{peach}, \kiemelN{pear}
+      \item \kiemelN{pear}, \kiemelZ{apple}, \kiemel{peach}
+      \item \kiemelN{pear}, \kiemel{peach}, \kiemelZ{apple}
+      \item \kiemel{peach}, \kiemelZ{apple}, \kiemelN{pear}
+      \item \kiemel{peach}, \kiemelN{pear}, \kiemelZ{apple}
+    \end{enumerate}
+  \end{description}
+\end{frame}
+
+%~ %14
+%~ \begin{frame}{Mintapélda függvények használatára}
+  %~ Megvalósítandó szolgáltatások (függvények):
+  %~ \vfill
+  %~ \begin{description}[mm]
+    %~ \item[Beolvasás] Beolvasandó $n$ és $k$ értéke
+    %~ \item[Főprogram] Adatok beolvasása, ${n \choose k}$ megjelenítése
+  %~ \end{description}
+  %~ \vfill
+  %~ \begin{center}
+    %~ \includegraphics{nk.pdf}
+  %~ \end{center}
+%~ \end{frame}
+
+%~ %15
+%~ \begin{frame}{Mintapélda függvények használatára}
+  %~ \begin{center}
+    %~ \includegraphics[scale=0.75]{nk2.pdf}
+  %~ \end{center}
+%~ \end{frame}
+
+%~ %16
+%~ \begin{frame}{Mintapélda függvények használatára}
+  %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+    %~ \small
+    %~ \lstinputlisting[style=c,linerange={1-16},numbers=left]{nk1.c}
+  %~ \end{exampleblock}
+%~ \end{frame}
+
+%~ %17
+%~ \begin{frame}{Mintapélda függvények használatára}
+  %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+    %~ \fontsize{8}{9} \selectfont
+    %~ \lstinputlisting[style=c,firstline=17,numbers=left,firstnumber=17]{nk1.c}
+  %~ \end{exampleblock}
+%~ \end{frame}
+
+%~ %18
+%~ \begin{frame}{Fogalmak -- élettartam}
+  %~ \kiemel{Élettartam} (lifetime, duration): az a \emph{periódus a futásidő alatt}, amíg a változó/függvény létezik, memóriát 
+%~ foglal. Típusai:
+  %~ \begin{itemize}
+    %~ \item Statikus
+    %~ \begin{itemize}
+      %~ \item Futás kezdetétől végéig foglal memóriát
+      %~ \item Összes függvény, és \emph{globális} (függvényeken kívül deklarált) változó ilyen
+      %~ \item Globális változók implicit inicializálása: minden bit zérus értékű
+      %~ \item Lehetőleg \kiemel{kerülni kell a globális változók használatát}
+      %~ \begin{itemize}
+        %~ \item[$+$] Paraméter-átadás költsége megtakarítható
+        %~ \item[$-$] Nehézkes újrahasznosíthatóság, rugalmatlan, környezetfüggő kód, névütközések veszélye, \dots
+      %~ \end{itemize}
+    %~ \end{itemize}
+  %~ \end{itemize}
+%~ \end{frame}
+
+%~ %19
+%~ \begin{frame}{Fogalmak -- élettartam}
+  %~ \begin{columns}[T]
+    %~ \column{0.5\textwidth}
+      %~ \begin{itemize}
+      %~ \small
+      %~ \item Lokális
+      %~ \begin{itemize}
+        %~ \item blokkba belépéstől annak elhagyásáig rendelnek memóriát hozzájuk
+        %~ \item függvényparaméterek, vezérlési szerkezetek definíciói is ilyenek
+        %~ \item csak explicit inicializáció történhet
+      %~ \end{itemize}
+    %~ \end{itemize}
+    %~ \column{0.5\textwidth}
+      %~ \begin{exampleblock}{\textattachfile{nk1.c}{nk1.c}}
+        %~ \tiny
+        %~ \lstinputlisting[style=c,firstline=17,lastline=25,numbers=right,firstnumber=17]{nk1.c}
+      %~ \end{exampleblock}
+  %~ \end{columns}
+  %~ \vfill
+  %~ \scriptsize
+  %~ Élettartamok (C99):
+  %~ \begin{description}[]
+    %~ \item[faktorialis] program teljes futásideje alatt létezik
+    %~ \item[$n$] 3 fv. hívás miatt 3x létrejön a fv. hívásakor/megszűnik visszatéréskor (18 v. 23. sor)
+    %~ \item[$f$] létrejön ha $n$ elég nagy, és megszűnik amikor a végrehajtás a 23. sorhoz ér
+    %~ \item[$i$] a 20. sor elérése pillanatában jön létre, és a ciklusból kilépéskor felszabadul
+  %~ \end{description}
+%~ \end{frame}
+
+%~ %20
+%~ \begin{frame}{Fogalmak -- hatáskör}
+  %~ \kiemel{Hatáskör} (érvényességi tartomány, hatókör, scope): meghatározza, hogy az objektumot a program \emph{mely részén} 
+%~ lehet elérni;
+%~ deklarációtól és annak helyétől függően:
+  %~ \begin{itemize}
+    %~ \item Blokk (lokális, belső)
+    %~ \begin{itemize}
+      %~ \item Deklarációtól a tartalmazó blokk végéig, beleértve a beágyazott blokkokat is
+      %~ \item Pl. függvény formális paraméterei, lokális változói
+    %~ \end{itemize}
+    %~ \item Fájl (globális, külső)
+    %~ \begin{itemize}
+      %~ \item minden függvény testén kívül deklarált azonosítók; deklarációs ponttól a fájl végéig
+      %~ \item Pl. függvények, globális változók
+    %~ \end{itemize}
+  %~ \end{itemize}
+%~ \end{frame}
+
+%~ %21
+%~ \begin{frame}{Fogalmak -- láthatóság}
+  %~ \kiemel{Láthatóság} (visibility):
+  %~ \begin{itemize}
+    %~ \item A forráskód területe, melyben az azonosító elérhető, hivatkozható
+    %~ \item Hatáskör és láthatóság általában fedik egymást, de a beágyazott blokkban deklarált azonosító ideiglenesen elrejtheti 
+%~ a befoglaló blokkban lévő azonosítót $\to$ \kiemel{rossz programozói gyakorlat, kerülendő!}
+  %~ \end{itemize}
+%~ \end{frame}
+
+%~ %22
+%~ \begin{frame}{Rekurzió}
+  %~ \kiemel{Rekurzív} függvényhívás
+  %~ \begin{itemize}
+    %~ \item Minden fv. hívhatja magát közvetlenül vagy közvetve
+    %~ \item Minden hívásnál új területet foglalnak a formális paramétereknek, lokális változóknak
+    %~ \item A globális változók mindig ugyanazon a területen maradnak!
+    %~ \item El kell kerülni a végtelen mélységű rekurziót!
+  %~ \end{itemize}
+  %~ \begin{exampleblock}{\textattachfile{nk2.c}{nk2.c}}
+    %~ \lstinputlisting[style=c,firstline=17,lastline=20,numbers=left,firstnumber=17]{nk2.c}
+  %~ \end{exampleblock}
+%~ \end{frame}
+
+%~ %23
+%~ \begin{frame}{Rekurzió}
+  %~ \scriptsize
+  %~ \begin{exampleblock}{\textattachfile{hatvany1.c}{hatvany1.c} Hatványozás szorzásokra visszavezetve}
+    %~ \scriptsize
+    %~ \lstinputlisting[style=c,firstline=3,lastline=8,numbers=left,firstnumber=2]{hatvany1.c}
+  %~ \end{exampleblock}
+  %~ \begin{exampleblock}{\textattachfile{hatvany2.c}{hatvany2.c} Rekurzív hatványozás, pl. $-3^5 = {-3^2}^2 \times -3^1 = 
+%~ -243$}
+    %~ \scriptsize
+    %~ \lstinputlisting[style=c,firstline=3,lastline=10,numbers=left,firstnumber=3]{hatvany2.c}
+  %~ \end{exampleblock}
+%~ \end{frame}
+
+%~ %24
+%~ \begin{frame}{Rekurzió}
+  %~ Fibonacci-sorozat: másodrendben rekurzív sorozat. Képzeletbeli nyúlcsalád növekedése: hány pár nyúl lesz $n$ hónap múlva, ha
+  %~ \begin{itemize}
+    %~ \item az első hónapban csak egyetlen újszülött nyúl-pár van,
+    %~ \item az újszülött nyúl-párok két hónap alatt válnak termékennyé,
+    %~ \item minden termékeny nyúl-pár minden hónapban egy újabb párt szül,
+    %~ \item és a nyulak örökké élnek.
+  %~ \end{itemize}
+  %~ \vfill
+  %~ $F_n = \left\{ \begin{array}{ll}
+    %~ 0, & \textrm{ha $n=0$}\\
+    %~ 1, & \textrm{ha $n=1$}\\
+    %~ F_{n-1} + F_{n-2} & \textrm{ha $n>1$}
+  %~ \end{array} \right.$
+%~ \end{frame}
+
+%~ %25
+%~ \begin{frame}{Rekurzió}
+  %~ \scriptsize
+  %~ \begin{exampleblock}{\textattachfile{fibonacci1.c}{fibonacci1.c} Iteratív változat}
+    %~ \scriptsize
+    %~ \lstinputlisting[style=c,firstline=3,lastline=12,numbers=left,firstnumber=3]{fibonacci1.c}
+  %~ \end{exampleblock}
+  %~ \begin{exampleblock}{\textattachfile{fibonacci2.c}{fibonacci2.c} Rekurzív változat}
+    %~ \scriptsize
+    %~ \lstinputlisting[style=c,firstline=3,lastline=6,numbers=left,firstnumber=3]{fibonacci2.c}
+  %~ \end{exampleblock}
+%~ \end{frame}
+
+\end{document}
