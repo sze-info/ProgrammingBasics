@@ -304,7 +304,7 @@ embedding.c:3:3: warning: ISO C forbids nested functions [-Wpedantic]\\
 
 %20
 \begin{frame}{Properties -- scope}
-  \kiemel{Scope} a possibly discontinuous portion of the source code where a name can be used.
+  \kiemel{Scope}: a portion of the source code where a name can be used to access its entity.
   \begin{itemize}
     \item Block (local)
     \begin{itemize}
@@ -319,72 +319,88 @@ embedding.c:3:3: warning: ISO C forbids nested functions [-Wpedantic]\\
   \end{itemize}
 \end{frame}
 
-%~ %21
-%~ \begin{frame}{Fogalmak -- láthatóság}
-  %~ \kiemel{Láthatóság} (visibility):
-  %~ \begin{itemize}
-    %~ \item A forráskód területe, melyben az azonosító elérhető, hivatkozható
-    %~ \item Hatáskör és láthatóság általában fedik egymást, de a beágyazott blokkban deklarált azonosító ideiglenesen elrejtheti 
-%~ a befoglaló blokkban lévő azonosítót $\to$ \kiemel{rossz programozói gyakorlat, kerülendő!}
-  %~ \end{itemize}
-%~ \end{frame}
+%21
+\begin{frame}{Properties -- visibility}
+  \kiemel{Visibility}:
+  \begin{itemize}
+    \small
+    \item The portion of the source code where the name can be legally accessed, referred.
+    \item \emph{Scope} and \emph{visibility} usually coincide, though an entity may become temporarily hidden by the appearance of a duplicate name. Both entities exist but the \emph{name} cannot be used to access the \emph{original entity} until the scope of the duplicate name ends $\to$ \kiemel{creating duplicate names is a bad programming practice and should be avoided}.
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{scopeVisibility.c}{scopeVisibility.c}}
+    \tiny
+    \vspace{-.3cm}
+    \lstinputlisting[style=c]{scopeVisibility.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-%~ %22
-%~ \begin{frame}{Rekurzió}
-  %~ \kiemel{Rekurzív} függvényhívás
-  %~ \begin{itemize}
-    %~ \item Minden fv. hívhatja magát közvetlenül vagy közvetve
-    %~ \item Minden hívásnál új területet foglalnak a formális paramétereknek, lokális változóknak
-    %~ \item A globális változók mindig ugyanazon a területen maradnak!
-    %~ \item El kell kerülni a végtelen mélységű rekurziót!
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{\textattachfile{nk2.c}{nk2.c}}
-    %~ \lstinputlisting[style=c,firstline=17,lastline=20,numbers=left,firstnumber=17]{nk2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%22
+\begin{frame}{Recursion}
+  \kiemel{Recursive} function call
+  \begin{itemize}
+    \item All functions are allowed to call themself directly or indirectly
+    \item New memory areas are going to be reserved at every call for formal parameters and local variables
+    \item Global variables remain at the same area
+    \item Infinite recursion must be avoided!
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{nk2.c}{nk2.c}}
+    \lstinputlisting[style=c,linerange={17-20}]{nk2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %23
-%~ \begin{frame}{Rekurzió}
-  %~ \scriptsize
-  %~ \begin{exampleblock}{\textattachfile{hatvany1.c}{hatvany1.c} Hatványozás szorzásokra visszavezetve}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,firstline=3,lastline=8,numbers=left,firstnumber=2]{hatvany1.c}
-  %~ \end{exampleblock}
-  %~ \begin{exampleblock}{\textattachfile{hatvany2.c}{hatvany2.c} Rekurzív hatványozás, pl. $-3^5 = {-3^2}^2 \times -3^1 = 
-%~ -243$}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,firstline=3,lastline=10,numbers=left,firstnumber=3]{hatvany2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%23
+\begin{frame}{Recursion}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{power1.c}{power1.c} Calculating power with multiplications}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={3-8},firstnumber=3]{power1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+  \begin{exampleblock}{\textattachfile{power2.c}{power2.c} Recursive power calculation, eg. $-3^5 = {-3^2}^2 \times -3^1 = 
+-243$}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,firstline=3,lastline=10,numbers=left,firstnumber=3]{power2.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-%~ %24
-%~ \begin{frame}{Rekurzió}
-  %~ Fibonacci-sorozat: másodrendben rekurzív sorozat. Képzeletbeli nyúlcsalád növekedése: hány pár nyúl lesz $n$ hónap múlva, ha
-  %~ \begin{itemize}
-    %~ \item az első hónapban csak egyetlen újszülött nyúl-pár van,
-    %~ \item az újszülött nyúl-párok két hónap alatt válnak termékennyé,
-    %~ \item minden termékeny nyúl-pár minden hónapban egy újabb párt szül,
-    %~ \item és a nyulak örökké élnek.
-  %~ \end{itemize}
-  %~ \vfill
-  %~ $F_n = \left\{ \begin{array}{ll}
-    %~ 0, & \textrm{ha $n=0$}\\
-    %~ 1, & \textrm{ha $n=1$}\\
-    %~ F_{n-1} + F_{n-2} & \textrm{ha $n>1$}
-  %~ \end{array} \right.$
-%~ \end{frame}
+%24
+\begin{frame}{Recursion}
+  \emph{Fibonacci sequence}: each number is the sum of the two preceding ones, starting from 0 and 1. It counts the members of an imaginery rabbit family over time. How many pairs of rabbits will we have after $n$ months if
+  \begin{itemize}
+    \item in the first month we only have 1 newborn rabbit-pair,
+    \item newborn rabbit-pairs become fertile after 2 months,
+    \item all fertile rabbit pairs give birth to another new pair of rabbits,
+    \item and rabbits live forever :)
+  \end{itemize}
+  \vfill
+  $F_n = \left\{ \begin{array}{ll}
+    0, & \textrm{ha $n=0$}\\
+    1, & \textrm{ha $n=1$}\\
+    F_{n-1} + F_{n-2} & \textrm{ha $n>1$}
+  \end{array} \right.$
+  \vfill
+  The beginning of the sequence is: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \dots
+\end{frame}
 
-%~ %25
-%~ \begin{frame}{Rekurzió}
-  %~ \scriptsize
-  %~ \begin{exampleblock}{\textattachfile{fibonacci1.c}{fibonacci1.c} Iteratív változat}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,firstline=3,lastline=12,numbers=left,firstnumber=3]{fibonacci1.c}
-  %~ \end{exampleblock}
-  %~ \begin{exampleblock}{\textattachfile{fibonacci2.c}{fibonacci2.c} Rekurzív változat}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,firstline=3,lastline=6,numbers=left,firstnumber=3]{fibonacci2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%25
+\begin{frame}{Recursion}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{fibonacci1.c}{fibonacci1.c} Iterative version}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,firstline=3,lastline=12,numbers=left,firstnumber=3]{fibonacci1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+  \begin{exampleblock}{\textattachfile{fibonacci2.c}{fibonacci2.c} Recursive version}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,firstline=3,lastline=6,numbers=left,firstnumber=3]{fibonacci2.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
 \end{document}
