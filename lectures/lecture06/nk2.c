@@ -9,7 +9,7 @@ int read(int max) {
   do {
     printf("Number: "); scanf("%d", &number);
     invalid = number<1 or number>max;
-    if(invalid) printf("Hibas adat!\n");
+    if(invalid) printf("Invalid data!\n");
   } while(invalid);
   return number;
 }
