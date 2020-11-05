@@ -150,102 +150,101 @@ main, after calling swap3: value of 'a': 2, value of 'b': 1
   \end{exampleblock}
 \end{frame}
 
-%~ %11
-%~ \begin{frame}{Mutatók}
-  %~ Néhány további tudnivaló mutatókkal kapcsolatban
-  %~ \begin{itemize}
-    %~ \item Mintapélda: \textattachfile{mutatok.c}{mutatok.c}
-    %~ \item \kiemel{Vigyázz!} \texttt{i} egész, \texttt{pi1} és \texttt{pi2} viszont egészet címző mutatók!
-    %~ \item A \kiemel{*} körül tetszőleges számú szóköz elhelyezhető
-    %~ \item Mutató is kaphat inicializálással kezdőértéket
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{}
-    %~ \lstinputlisting[style=c,linerange={4-7},numbers=left,firstnumber=4]{mutatok.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%11
+\begin{frame}{Pointers}
+  Further information regarding pointers
+  \begin{itemize}
+    \item Example: \textattachfile{pointers.c}{pointers.c}
+    \item \kiemel{Watch out!} \texttt{i} is an \texttt{int}, but \texttt{pi1} and \texttt{pi2} are pointers to \texttt{int}s!
+    \item Any number of white spaces can be placed on both sides of \kiemel{*}
+    \item A pointer can be initialized, too
+  \end{itemize}
+  \begin{exampleblock}{}
+    \lstinputlisting[style=c,linerange={4-7},firstnumber=4]{pointers.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %12
-%~ \begin{frame}{Mutatók}
-  %~ \begin{itemize}
-    %~ \item Ha valaminek nincs memóriacíme, akkor az \& operátor sem tudja előállítani
-  %~ \end{itemize}
-  %~ \begin{alertblock}{}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={8-10},numbers=left,firstnumber=8]{mutatok.c}
-  %~ \end{alertblock}
-  %~ \begin{itemize}
-    %~ \item Értékadás általában csak azonos típusú mutatók között értelmes
-  %~ \end{itemize}
-  %~ \begin{alertblock}{}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={11-12},numbers=left,firstnumber=11]{mutatok.c}
-  %~ \end{alertblock}
-%~ \end{frame}
+%12
+\begin{frame}{Pointers}
+  \begin{itemize}
+    \item If an object does not have a memory location/address, even operator \kiemel{\&} cannot determine it
+  \end{itemize}
+  \begin{alertblock}{}
+    \small
+    \lstinputlisting[style=c,linerange={8-10},firstnumber=8]{pointers.c}
+  \end{alertblock}
+  \begin{itemize}
+    \item In general, assignments can be carried out with pointers of the same type
+  \end{itemize}
+  \begin{alertblock}{}
+    \small
+    \lstinputlisting[style=c,linerange={11-12},firstnumber=11]{pointers.c}
+  \end{alertblock}
+\end{frame}
 
-%~ %13
-%~ \begin{frame}{Mutatók}
-  %~ \begin{itemize}
-    %~ \small
-    %~ \item Kivétel: \texttt{void*} bármilyen más mutató értékét felveheti\\($\approx$ típusinformáció eldobása)
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={13-14},numbers=left,firstnumber=13]{mutatok.c}
-  %~ \end{exampleblock}
-  %~ \begin{itemize}
-    %~ \small
-    %~ \item Fordítva megy ugyan, de nem lehetünk benne biztosak, hogy azon a címen milyen típusú adat van
-  %~ \end{itemize}
-  %~ \begin{alertblock}{}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={15-15},numbers=left,firstnumber=15]{mutatok.c}
-  %~ \end{alertblock}
-%~ \end{frame}
+%13
+\begin{frame}{Pointers}
+  \begin{itemize}
+    \small
+    \item Exception: any pointers can be assigned to a \texttt{void*} pointer \\($\approx$ dropping type information)
+  \end{itemize}
+  \begin{exampleblock}{}
+    \small
+    \lstinputlisting[style=c,linerange={13-14},firstnumber=13]{pointers.c}
+  \end{exampleblock}
+  \begin{itemize}
+    \small
+    \item It can be done in the opposite direction, but the type of data at the specified address may be incompatible
+  \end{itemize}
+  \begin{alertblock}{}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={15-15},firstnumber=15]{pointers.c}
+  \end{alertblock}
+\end{frame}
 
-%~ %14
-%~ \begin{frame}{Mutatók}
-  %~ \begin{itemize}
-    %~ \item A \texttt{NULL} speciális memóriacím: semmilyen adatot nem tárolnak ott, és
-    %~ \item hiba, vagy valami hiányának jelzésére használják,
-    %~ \item bármilyen típusú mutatóhoz hozzárendelhető érték
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={16-16},numbers=left,firstnumber=16]{mutatok.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%14
+\begin{frame}{Pointers}
+  \begin{itemize}
+    \item \texttt{NULL} is a special address: no data is stored there
+    \item It indicates an error or lack of something
+    \item Can be assigned to any type of pointers
+  \end{itemize}
+  \begin{exampleblock}{}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={16-16},firstnumber=16]{pointers.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %15
-%~ \begin{frame}{Dátumok kezelése}
-  %~ Probléma:
-  %~ \begin{itemize}
-    %~ \item[] struktúrák általában nagyok, függvényhívásnál a paraméter átadás a másolás miatt időigényes
-  %~ \end{itemize}
-  %~ Megoldás:
-  %~ \begin{itemize}
-    %~ \item adjuk át a struktúra címét!
-    %~ \item \kiemel{Veszély!} Ha a \emph{hívott} fv. módosítja a paramétert, annak a \emph{hívó} függvényben is lesz hatása!
-    %~ \item Ha a \emph{hívott} függvénynek nem célja módosítani a paramétert: \kiemel{\texttt{const}} csak olvashatóvá teszi 
-%~ (bármilyen más változónál is használható \emph{típusmódosító})
-    %~ \item Indirekció + tagelérés: \kiemel{\texttt{->}} operátorral, pl. \texttt{(*d).nap} $\equiv$ \texttt{d->nap}
-  %~ \end{itemize}
-%~ \end{frame}
+%15
+\begin{frame}{Date management}
+  Practical problem:
+  \begin{itemize}
+    \item[] the structures are usually big, parameter passing needs too much time
+  \end{itemize}
+  Solution:
+  \begin{itemize}
+    \item pass the \emph{address} of the structure!
+    \item \kiemel{Danger!} If the \emph{called} fn. modifies the parameter, that affects the variable in the \emph{caller}, too!
+    \item To avoid the unintended modifications of variables in the \emph{called} fn.: modifier \kiemel{\texttt{const}} makes the parameter read-only (it can be used with other types as well)
+    \item Indirection + member access: with operator \kiemel{\texttt{->}}, eg. \texttt{(*d).day} $\equiv$ \texttt{d->day}
+  \end{itemize}
+\end{frame}
 
-%~ %16
-%~ \begin{frame}{Dátumok kezelése}
-  %~ \begin{exampleblock}{\textattachfile{naptar2.c}{naptar2.c}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={23-37},numbers=left,firstnumber=23]{naptar2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%16
+\begin{frame}{Date management}
+  \begin{exampleblock}{\textattachfile{calendar2.c}{calendar2.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={23-37},firstnumber=23]{calendar2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %17
-%~ \begin{frame}{Dátumok kezelése}
-  %~ \begin{exampleblock}{\textattachfile{naptar2.c}{naptar2.c}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={65-79},numbers=left,firstnumber=65]{naptar2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%17
+\begin{frame}{Date management}
+  \begin{exampleblock}{\textattachfile{calendar2.c}{calendar2.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={64-78},firstnumber=64]{calendar2.c}
+  \end{exampleblock}
+\end{frame}
 
 %~ %18
 %~ \begin{frame}{Buborék rendezés}
