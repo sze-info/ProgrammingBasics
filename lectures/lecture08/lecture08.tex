@@ -246,400 +246,389 @@ main, after calling swap3: value of 'a': 2, value of 'b': 1
   \end{exampleblock}
 \end{frame}
 
-%~ %18
-%~ \begin{frame}{Buborék rendezés}
-  %~ \begin{exampleblock}{\textattachfile{buborek2.c}{buborek2.c}}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={1-13},numbers=left,firstnumber=1]{buborek2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%18
+\begin{frame}{Bubble sort}
+  \begin{exampleblock}{\textattachfile{bubble2.c}{bubble2.c}}
+    \small
+    \lstinputlisting[style=c,linerange={1-13},firstnumber=1]{bubble2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %19
-%~ \begin{frame}[fragile]{Buborék rendezés}
-  %~ \begin{exampleblock}{\textattachfile{buborek2.c}{buborek2.c}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={15-25},numbers=left,firstnumber=15]{buborek2.c}
-  %~ \end{exampleblock}
-  %~ \begin{block}{Kimenet}
-    %~ \footnotesize
-    %~ \begin{verbatim}
-%~ Rendezes utan:
-%~ -4      3       3       4       7       12      54      56
-%~ \end{verbatim}
-  %~ \end{block}
-%~ \end{frame}
+%19
+\begin{frame}[fragile]{Bubble sort}
+  \begin{exampleblock}{\textattachfile{bubble2.c}{bubble2.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={15-25},firstnumber=15]{bubble2.c}
+  \end{exampleblock}
+  \begin{block}{Output}
+    \footnotesize
+    \begin{verbatim}
+After sorting:
+-4      3      3      4      7     12     54     56
+\end{verbatim}
+  \end{block}
+\end{frame}
 
-%~ %20
-%~ \begin{frame}{Mutatók és tömbök}
-  %~ Újdonságok:
-  %~ \begin{itemize}
-    %~ \item Tömb elemszámát nem \emph{kell} megadni a formális paraméterlistán (de a fv.-nek valahonnan tudnia kell, hány 
-%~ tömbelemet kell rendezni)
-    %~ \item A \emph{hívott} függvény \kiemel{módosította} a paraméter tömböt!
-  %~ \end{itemize}
-  %~ Magyarázat:
-  %~ \begin{itemize}
-    %~ \item A tömbök általában nagyok $\to$ \kiemel{mindig} a címet adják át!
-    %~ \item A tömbök azonosítója egy \emph{konstans mutató} (a mutatót nem, de a mutatott helyen lévő értéket lehet módosítani), 
-%~ pl.\\ \texttt{int t[]} $\equiv$ \texttt{int* const t}
-    %~ \item A tömb tartalma csak olvashatóvá tehető: \\ \texttt{const int* const a} $\equiv$ \texttt{const int a[]}
-  %~ \end{itemize}
-%~ \end{frame}
+%20
+\begin{frame}{Pointers and arrays}
+  Please consider that
+  \begin{itemize}
+    \item The size of the array is \emph{not always needed} to be passed, but the function needs to know the number of elements to sort
+    \item The \emph{called} function has \kiemel{modified} the array!
+  \end{itemize}
+  Explanation:
+  \begin{itemize}
+    \item Arrays are usually big $\to$ \kiemel{always} a pointer to the array is passed!
+    \item The name of the array is a \emph{constant pointer} (the pointer cannot be modified, but the data where it points to can be modified),
+eg.\\ \texttt{int a[]} $\equiv$ \texttt{int* const a}
+    \item The content of the array can be made read-only: \\ \texttt{const int* const a} $\equiv$ \texttt{const int a[]}
+  \end{itemize}
+\end{frame}
 
-%~ %21
-%~ \begin{frame}{Buborék rendezés}
-  %~ \begin{exampleblock}{\textattachfile{buborek3.c}{buborek3.c}}
-    %~ \small
-    %~ \lstinputlisting[style=c,linerange={15-29},numbers=left,firstnumber=15]{buborek3.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%21
+\begin{frame}{Bubble sort}
+  \begin{exampleblock}{\textattachfile{bubble3.c}{bubble3.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={15-29},firstnumber=15]{bubble3.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %22
-%~ \begin{frame}{Mutatók}
-  %~ Mutatóaritmetika: hasonlóan végezhető művelet mutatókkal, mint egészekkel
-  %~ \begin{itemize}
-    %~ \item Mutató növelhető, csökkenthető $\to$ a tényleges cím a mutatott adat méretének többszörösével változik
-    %~ \item Mutatók összehasonlíthatóak (relációk)
-    %~ \item tömbelemCíme = \\ \qquad tömbKezdőcíme + index*sizeof(tömbelemTípusa)
-    %~ \item \texttt{tomb[index]} $\equiv$ \texttt{*(tomb + index)}
-    %~ \item A \texttt{void*} mutató kivételes: a mutatott elem mérete ismeretlen
-    %~ \item Azonos tömb elemeit címző mutatók különbsége képezhető
-  %~ \end{itemize}
-%~ \end{frame}
+%22
+\begin{frame}{Pointers}
+  Pointer arithmetics: similarly to integers, operations can be evaluated with pointers
+  \begin{itemize}
+    \item A pointer can be increased and decreased $\to$ the real increase/decrease of the address is the size of the data
+    \item Pointers can be compared (relations)
+    \item addressOfAnArrayElement = \\ \qquad baseAddressOfTheArray + index*sizeof(typeOfArray)
+    \item \texttt{array[index]} $\equiv$ \texttt{*(array + index)}
+    \item The \texttt{void*} pointer is a special one: the size of the object it points to is unknown
+    \item The difference of pointers addressing elements of the same array can be calculated
+  \end{itemize}
+\end{frame}
 
-%~ %23
-%~ \begin{frame}[fragile]{Mutatók}
-%~ \begin{exampleblock}{\textattachfile{mutatok2.c}{mutatok2.c}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={4-12},numbers=left,firstnumber=4]{mutatok2.c}
-  %~ \end{exampleblock}
-  %~ \begin{block}{Kimenet}
-    %~ \begin{verbatim}
-%~ Elso elem erteke (cime):        100 (0x7ffc7a2b43f0)
-%~ Masodik elem erteke (cime):     200 (0x7ffc7a2b43f4)
-%~ Harmadik elem erteke (cime):    300 (0x7ffc7a2b43f8)    
-%~ \end{verbatim}
-  %~ \end{block}
-%~ \end{frame}
+%23
+\begin{frame}[fragile]{Pointers}
+\begin{exampleblock}{\textattachfile{pointers2.c}{pointers2.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={4-9},firstnumber=4]{pointers2.c}
+  \end{exampleblock}
+  \begin{block}{Output}
+    \begin{verbatim}
+Value (address) of the 1st element:	100 (0x7ffd290eb7dc)
+Value (address) of the 2nd element:	200 (0x7ffd290eb7e0)
+Value (address) of the 3rd element:	300 (0x7ffd290eb7e4)    
+\end{verbatim}
+  \end{block}
+\end{frame}
 
-%~ %24
-%~ \begin{frame}{Buborék rendezés}
-  %~ \begin{exampleblock}{\textattachfile{buborek4.c}{buborek4.c}}
-    %~ \lstinputlisting[style=c,linerange={15-20},numbers=left,firstnumber=15]{buborek4.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%24
+\begin{frame}{Bubble sort}
+  \begin{exampleblock}{\textattachfile{bubble4.c}{bubble4.c}}
+    \lstinputlisting[style=c,linerange={15-20},firstnumber=15]{bubble4.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %25
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ Feladat:
-  %~ \begin{itemize}
-    %~ \itemÁllítsunk elő egy \emph{új} karakterláncot egy \emph{régi} alapján úgy, hogy a régiben egy adott rész-karakterláncot 
-%~ lecserélünk valami másra!
-    %~ \item Pl. ``\emph{Mari} foz, \emph{Mari} sut, \emph{Mari} mosogat'' $\to$ ``\emph{Julcsa} foz, \emph{Julcsa} sut, 
-%~ \emph{Julcsa} mosogat''
-  %~ \end{itemize}
-  %~ Megoldás:
-  %~ \begin{enumerate}
-    %~ \item Kikeressük a \emph{régi} karakterláncban \emph{Mari} első előfordulását
-    %~ \item Mindent, ami előtte van, hozzáfűzzük a kezdetben üres \emph{új} karakterlánc végéhez
-    %~ \item Majd hozzáfűzzük \emph{új} végéhez \emph{Julcsa}-t
-    %~ \item Megkeressük \emph{Mari} következő előfordulását, majd ismételjük 2-t és 3-at mindaddig, amíg az összes \emph{Mari}-t 
-%~ meg nem találtuk
-    %~ \item Az utolsó \emph{Mari} utáni részt hozzáfűzzük az \emph{új} karakterlánc végéhez
-  %~ \end{enumerate}
-%~ \end{frame}
+%25
+\begin{frame}{Substitution of substrings}
+  Task:
+  \begin{itemize}
+    \item Create a \emph{new} string based on an \emph{old} one by replacing a specific substring with something else!
+    \item Eg. ``\emph{Jane} cooks, \emph{Jane} bakes, \emph{Jane} does the washing up'' $\to$ ``\emph{Emily} cooks, \emph{Emily} bakes, \emph{Emily} does the washing up''
+  \end{itemize}
+  Solution:
+  \begin{enumerate}
+    \item Search for the first occurrence of \emph{Jane} in the \emph{old} string
+    \item Append everything in front of it to the end of the initially empty \emph{new} string
+    \item Next, append \emph{Emily} to \emph{new}
+    \item Search for the next occurrance of \emph{Jane}, then repeat steps 2 and 3 until we find all occurrences of \emph{Jane}
+    \item Append the remaining characters after the last occurrence of \emph{Jane} to \emph{new}
+  \end{enumerate}
+\end{frame}
 
-%~ %26
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ Mire lesz szükség?
-  %~ \begin{itemize}
-    %~ \small
-    %~ \item \texttt{size\_t strlen(const char *s);} \\
-      %~ \texttt{s} hosszát szolgáltatja, a lánczáró \texttt{'\textbackslash0'} nélkül
-    %~ \item \texttt{char *strstr(const char *haystack, const char *needle);} \\
-      %~ Visszaadja \texttt{needle} első előfordulásának címét \texttt{haystack}-ben, vagy \texttt{NULL} mutatót szolgáltat, ha 
-%~ nem fordul elő benne
-    %~ \item \texttt{char *strcat(char *dest, const char *src);} \\
-      %~ \texttt{char *str\kiemel{n}cat(char *dest, const char *src, size\_t n);} \\
-      %~ Hozzáfűzi \texttt{src}-t \texttt{dest} végéhez, lezáró \texttt{'\textbackslash0'}-t megfelelően elhelyezi \\
-      %~ \texttt{strncat()} legfeljebb \texttt{n} karaktert fűz hozzá \texttt{dest}-hez\\
-    %~ \item \texttt{size\_t} ált. \texttt{unsigned int}
-    %~ \item Elegendő helynek (azaz \texttt{strlen(dest)+strlen(src)+1}, ill. \texttt{strlen(dest)+n+1}) kell lennie
-%~ \texttt{dest}-től kezdődően!
-  %~ \end{itemize}
-%~ \end{frame}
+%26
+\begin{frame}{Substitution of substrings}
+  What do we need?
+  \begin{itemize}
+    \small
+    \item \texttt{size\_t strlen(const char *s);} \\
+      Provides the length of \texttt{s} excluding the terminating \texttt{'\textbackslash0'} character
+    \item \texttt{char *strstr(const char *haystack, const char *needle);} \\
+      Returns the first occurrence of \texttt{needle} in \texttt{haystack}, or a \texttt{NULL} pointer if it is not found
+    \item \texttt{char *strcat(char *dest, const char *src);} \\
+      \texttt{char *str\kiemel{n}cat(char *dest, const char *src, size\_t n);} \\
+      Appends \texttt{src} to the end of \texttt{dest}, then puts the terminating \texttt{'\textbackslash0'} appropriately at the end of the string \\
+      \texttt{strncat()} appends at most \texttt{n} characters to the end of \texttt{dest}\\
+    \item \texttt{size\_t} is generally an \texttt{unsigned int}
+    \item There must be sufficient (\texttt{strlen(dest)+strlen(src)+1} or \texttt{strlen(dest)+n+1}) space starting from \texttt{dest}
+  \end{itemize}
+\end{frame}
 
-%~ %27
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ \begin{exampleblock}{\textattachfile{nevek1.c}{nevek1.c}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={8-25},numbers=left,firstnumber=8]{nevek1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%27
+\begin{frame}{Substitution of substrings}
+  \begin{exampleblock}{\textattachfile{names1.c}{names1.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={8-25},firstnumber=8]{names1.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %28
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ \scriptsize
-  %~ \begin{exampleblock}{\textattachfile{nevek2.c}{Hossz megállapítás}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={8-12},numbers=left,firstnumber=8]{nevek2.c}
-  %~ \end{exampleblock}
-  %~ \scriptsize
-  %~ \begin{exampleblock}{\textattachfile{nevek2.c}{\emph{Tű} keresése a \emph{szénakazalban}}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={14-23},numbers=left,firstnumber=14]{nevek2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%28
+\begin{frame}{Substitution of substrings}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{names2.c}{Determining length}}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={8-12},firstnumber=8]{names2.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{names2.c}{Looking for the \emph{needle} in the \emph{haystack}}}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={14-23},firstnumber=14]{names2.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-%~ %29
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ \begin{exampleblock}{\textattachfile{nevek2.c}{Legfeljebb \emph{n} karakter hozzáfűzése}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={25-38},numbers=left,firstnumber=25]{nevek2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%29
+\begin{frame}{Substitution of substrings}
+  \begin{exampleblock}{\textattachfile{names2.c}{Appending at most \emph{n} characters}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={25-38},numbers=left,firstnumber=25]{names2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %30
-%~ \begin{frame}{Rész-karakterláncok cseréje}
-  %~ \begin{exampleblock}{\textattachfile{nevek2.c}{Karakterláncok összefűzése}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={40-48},numbers=left,firstnumber=39]{nevek2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%30
+\begin{frame}{Substitution of substrings}
+  \begin{exampleblock}{\textattachfile{names2.c}{Merging strings}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={40-48},numbers=left,firstnumber=39]{names2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %31
-%~ \begin{frame}{Magán- és mássalhangzók keresése}
-  %~ Feladat:
-  %~ \begin{itemize}
-    %~ \small
-    %~ \item[] Állapítsuk meg egy karakterlánc összes betűjéről, hogy magán- vagy mássalhangzók-e!
-  %~ \end{itemize}
-  %~ Megoldás:
-  %~ \begin{enumerate}
-    %~ \small
-    %~ \item Egy magánhangzókat tartalmazó karakterláncot veszünk fel (mivel mássalhangzóból sokkal több van).
-    %~ \item Végignézzük a vizsgálandó karakterlánc összes jelét, és ha az betű, akkor kikeressük helyét a magánhangzók között.
-    %~ \item Ha megtaláljuk $\to$ magánhangzó, ha nem $\to$ mássalhangzó
-  %~ \end{enumerate}
-  %~ Mire lesz szükség?
-  %~ \begin{itemize}
-    %~ \small
-    %~ \item \texttt{char *strchr(const char *s, int c);} \\
-      %~ \texttt{c}-nek \texttt{s}-en belüli \kiemel{első} elfordulásának címével tér vissza, vagy \texttt{NULL}-lal, ha nem
-%~ találja \\
-      %~ Akkor is működik, ha \texttt{c=='\textbackslash0'}
-    %~ \item \texttt{char *str\kiemel{r}chr(const char *s, int c);} \\
-      %~ Mint \texttt{strchr()}, de az \kiemel{utolsó} elfordulás címét adja vissza
-  %~ \end{itemize}
-%~ \end{frame}
+%31
+\begin{frame}{Determining vowels and consonants}
+  Task:
+  \begin{itemize}
+    \small
+    \item[] Determine from all the letters of a string whether they are vowels or consonants.
+  \end{itemize}
+  Solution:
+  \begin{enumerate}
+    \small
+    \item Define a string of vowels (because there are much more consonants)
+    \item Check all the characters of the string and if the current one is a letter look for it among vowels
+    \item If it is found somewhere $\to$ vowel, else $\to$ consonant
+  \end{enumerate}
+  What do we need?
+  \begin{itemize}
+    \small
+    \item \texttt{char *strchr(const char *s, int c);} \\
+      Returns the address of the \kiemel{1st} occurrence of \texttt{c} in \texttt{s}, or \texttt{NULL} if it is not found \\
+      It works even if \texttt{c=='\textbackslash0'}
+    \item \texttt{char *str\kiemel{r}chr(const char *s, int c);} \\
+      Like \texttt{strchr()}, but returns the address of the \kiemel{last} occurrence
+  \end{itemize}
+\end{frame}
 
-%~ %32
-%~ \begin{frame}{Magán- és mássalhangzók keresése}
-  %~ \begin{exampleblock}{\textattachfile{magan1.c}{magan1.c}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={5-18},numbers=left,firstnumber=5]{magan1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%32
+\begin{frame}{Determining vowels and consonants}
+  \begin{exampleblock}{\textattachfile{vowel1.c}{vowel1.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={5-18},firstnumber=5]{vowel1.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %33
-%~ \begin{frame}{Magán- és mássalhangzók keresése}
-  %~ \begin{exampleblock}{\textattachfile{magan2.c}{Egy karakter helyének maghatározása}}
-    %~ \lstinputlisting[style=c,linerange={5-9},numbers=left,firstnumber=5]{magan2.c}
-  %~ \end{exampleblock}
-  %~ \vfill
-  %~ Észrevétel: túl bonyolult a \texttt{printf} egyetlen karakter kiírásához!
-  %~ \begin{itemize}
-    %~ \item \texttt{int putchar(int c);} \\
-      %~ \texttt{c} karaktert a szabvány kimenetre írja \\
-      %~ Visszatérési érték: a kiírt karakter, vagy \texttt{EOF} hiba esetén
-  %~ \end{itemize}
-%~ \end{frame}
+%33
+\begin{frame}{Determining vowels and consonants}
+  \begin{exampleblock}{\textattachfile{vowel2.c}{Looking for a character in a string}}
+    \lstinputlisting[style=c,linerange={5-9},firstnumber=5]{vowel2.c}
+  \end{exampleblock}
+  \vfill
+  Remark: \texttt{printf} is too complex (slow) to print a sole character
+  \begin{itemize}
+    \item \texttt{int putchar(int c);} \\
+      Puts character \texttt{c} to the standard output \\
+      Return value: the printed character or \texttt{EOF} in case of an error
+  \end{itemize}
+\end{frame}
 
-%~ %34
-%~ \begin{frame}{Magán- és mássalhangzók keresése}
-  %~ \begin{exampleblock}{\textattachfile{magan2.c}{magan2.c}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={11-24},numbers=left,firstnumber=11]{magan2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%34
+\begin{frame}{Determining vowels and consonants}
+  \begin{exampleblock}{\textattachfile{vowel2.c}{vowel2.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={11-24},firstnumber=11]{vowel2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %35
-%~ \begin{frame}{Nevek összehasonlítása}
-  %~ Feladat:
-  %~ \begin{itemize}
-    %~ \item[] Olvassunk be két nevet a szabvány bemenetről, majd állapítsuk meg, melyik van előrébb a névsorban!
-  %~ \end{itemize}
-  %~ Mire lesz szükség?
-  %~ \begin{itemize}
-    %~ \item \texttt{int strcmp(const char *s1, const char *s2);}\\
-      %~ \texttt{int str\kiemel{n}cmp(const char *s1, const char *s2, \\
-      %~ \qquad size\_t n);}\\
-      %~ Összehasonlítják az \texttt{unsigned char}-ként értelmezett \texttt{s1} és \texttt{s2} paramétereket. Vt. érték
-      %~ \begin{itemize}
-        %~ \scriptsize
-        %~ \item negatív, ha \texttt{s1 < s2},
-        %~ \item pozitív, ha \texttt{s1 > s2},
-        %~ \item különben nulla.
-      %~ \end{itemize}
-      %~ \texttt{strncmp()} legfeljebb az első \texttt{n} karakterig végzi az összehasonlítást
-    %~ \item Van értelme \texttt{s1} és \texttt{s2} közvetlen összehasonlításának (relációs operátorokkal)?
-  %~ \end{itemize}
-%~ \end{frame}
+%35
+\begin{frame}{Comparing names}
+  Task:
+  \begin{itemize}
+    \item[] Read two names and determine their order according to the alphabet.
+  \end{itemize}
+  What do we need?
+  \begin{itemize}
+    \item \texttt{int strcmp(const char *s1, const char *s2);}\\
+      \texttt{int str\kiemel{n}cmp(const char *s1, const char *s2, size\_t n);}\\
+      They compare parameters \texttt{s1} and \texttt{s2} interpreted as sequences of \texttt{unsigned char}s. The return value is
+      \begin{itemize}
+        \scriptsize
+        \item negative, if \texttt{*s1 < *s2},
+        \item positive, if \texttt{*s1 > *s2},
+        \item zero otherwise.
+      \end{itemize}
+      \texttt{strncmp()} carries out the comparison at most with the first \texttt{n} characters
+    \item Does it have any sense to directly compare \texttt{s1} and \texttt{s2} with relational operators?
+  \end{itemize}
+\end{frame}
 
-%~ %36
-%~ \begin{frame}{Nevek összehasonlítása}
-  %~ \begin{exampleblock}{\textattachfile{hasonlit1.c}{hasonlit1.c}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={6-20},numbers=left,firstnumber=6]{hasonlit1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%36
+\begin{frame}{Comparing names}
+  \begin{exampleblock}{\textattachfile{compare1.c}{compare1.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={6-20},firstnumber=6]{compare1.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %37
-%~ \begin{frame}{Nevek összehasonlítása}
-  %~ \begin{exampleblock}{\textattachfile{hasonlit2.c}{Karakterláncok összehasonlítása}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={5-8},numbers=left,firstnumber=5]{hasonlit2.c}
-  %~ \end{exampleblock}
-  %~ Probléma: \texttt{scanf}-fel nem tudunk szóközt (fehér karaktert) tartalmazó karakterláncot beolvasni!\\
-  %~ Lehetséges megoldások:
-  %~ \begin{itemize}
-    %~ \item \texttt{char *gets(char *s);} \\
-      %~ Beolvas egy sort a szabvány bemenetről \emph{új sor} vagy \texttt{EOF} karakterig. A soremelést nem tárolja. Puffer 
-%~ túlcsordulás elleni védelem nincs, elavult fv.
-    %~ \item \texttt{char *fgets(char *s, int size, FILE *stream);} \\
-      %~ Beolvas egy sort, de legfeljebb \texttt{size}-1 karaktert a \texttt{stream} folyamból \emph{új sor} vagy \texttt{EOF} 
-%~ karakterig. A soremelést is tárolja.
-  %~ \end{itemize}
-%~ \end{frame}
+%37
+\begin{frame}{Comparing names}
+  \begin{exampleblock}{\textattachfile{compare2.c}{Comparing strings}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={5-8},firstnumber=5]{compare2.c}
+  \end{exampleblock}
+  Problem: \texttt{scanf} cannot read a string containing white spaces\\
+  Possible solutions:
+  \begin{itemize}
+    \item \texttt{char *gets(char *s);} \\
+      Reads a line from standard input until \emph{new line} or \texttt{EOF} arrives. It does not store the new line character itself. No buffer overrun protection, \kiemel{deprecated}.
+    \item \texttt{char *fgets(char *s, int size, FILE *stream);} \\
+      Reads a line from \texttt{stream} and stores at most \texttt{size}-1 characters until \emph{new line} or \texttt{EOF} 
+arrives. It stores the new line character as well.
+  \end{itemize}
+\end{frame}
 
-%~ %38
-%~ \begin{frame}{Nevek összehasonlítása}
-  %~ \begin{exampleblock}{\textattachfile{hasonlit3.c}{Beolvasás \texttt{gets} függvénnyel}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={10-11},numbers=left,firstnumber=10]{hasonlit3.c}
-  %~ \end{exampleblock}
-  %~ \begin{exampleblock}{\textattachfile{hasonlit4.c}{Beolvasás \texttt{fgets} függvénnyel}}
-    %~ \footnotesize
-    %~ \lstinputlisting[style=c,linerange={10-16},numbers=left,firstnumber=10]{hasonlit4.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%38
+\begin{frame}{Reading lines}
+  \begin{exampleblock}{\textattachfile{compare3.c}{Reading with \texttt{gets}}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={10-11},firstnumber=10]{compare3.c}
+  \end{exampleblock}
+  \begin{exampleblock}{\textattachfile{compare4.c}{Reading with \texttt{fgets}}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={10-16},firstnumber=10]{compare4.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %39
-%~ \begin{frame}{Nevek összehasonlítása}
-  %~ \footnotesize
-  %~ Előnyös tulajdonságok egyesítése: \texttt{getline}
-  %~ \begin{itemize}
-    %~ \scriptsize
-    %~ \item nem olvas több karaktert, mint amennyi hely rendelkezésre áll
-    %~ \item nem tárolja az \emph{új sor} karaktert
-    %~ \item karakteres puffert törli a következő olvasás előtt
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{\textattachfile{hasonlit5.c}{Beolvasás saját \texttt{getline} függvénnyel}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c,linerange={7-14},numbers=left,firstnumber=7]{hasonlit5.c}
-    %~ \lstinputlisting[style=c,linerange={20-21},numbers=left,firstnumber=20]{hasonlit5.c}
-  %~ \end{exampleblock}
-  %~ \begin{itemize}
-    %~ \item \texttt{int getchar(void);} \\
-      %~ Beolvas egy karaktert a szabvány bemenetről
-  %~ \end{itemize}
-%~ \end{frame}
+%39
+\begin{frame}{Reading lines}
+  \footnotesize
+  Combination of good properties: \texttt{sze\_getline} (\kiemel{Be careful!} Some libraries already contain the function \texttt{getline} and that may cause a name collision. To prevent this, the prefix \texttt{sze\_} was applied.)
+  \begin{itemize}
+    \scriptsize
+    \item Never reads more characters than can be stored in the available space
+    \item Does not store the \emph{new line} character
+    \item Clears the character buffer before next reading
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{compare5.c}{Reading with own \texttt{getline} function}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={7-14},firstnumber=7]{compare5.c}
+    \lstinputlisting[style=c,linerange={20-21},firstnumber=20]{compare5.c}
+  \end{exampleblock}
+  \begin{itemize}
+    \item \texttt{int getchar(void);} \\
+      Reads a single character from the standard input
+  \end{itemize}
+\end{frame}
 
-%~ %40
-%~ \begin{frame}{Karakterláncok beolvasása}
-  %~ \scriptsize
-  %~ Feladat:
-  %~ \begin{itemize}
-    %~ \item[] Készítsen programot, amely neveket olvas a szabvány bemenetről EOF-ig vagy üres sorig!
-%~ Megállapítandó és kijelezendő a leghosszabb név!
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{\textattachfile{leghosszabb1.c}{leghosszabb1.c}}
-    %~ \fontsize{8}{9} \selectfont
-    %~ \lstinputlisting[style=c,linerange={15-32},numbers=left,firstnumber=15]{leghosszabb1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%40
+\begin{frame}{Reading lines}
+  \scriptsize
+  Task:
+  \begin{itemize}
+    \item[] Write a program that reads names from the standard input until EOF or an empty line arrives.
+Determine and print the longest name!
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{longest1.c}{longest1.c}}
+    \fontsize{8}{9} \selectfont
+    \lstinputlisting[style=c,linerange={15-32},firstnumber=15]{longest1.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %41
-%~ \begin{frame}{Karakterláncok beolvasása}
-  %~ \footnotesize
-  %~ \begin{itemize}
-    %~ \item \texttt{char *strcpy(char *dest, const char *src);} \\
-      %~ \texttt{char *str\kiemel{n}cpy(char *dest, const char *src, size\_t n);}\\
-      %~ Karakterek másolása \texttt{src} helyről \texttt{dest}-re\\
-      %~ Az eredmény (\texttt{dest}) címével térnek vissza \\
-      %~ \texttt{strncpy()} legfeljebb \texttt{n} karaktert másol, és ha \texttt{src} rövidebb \texttt{n}-nél, akkor a
-%~ lánczáró nullát is kiteszi, de különben nem. \\
-      %~ Nem ellenőrzik, hogy az eredmény elfér-e a megadott \texttt{dest} helyen
-  %~ \end{itemize}
-  %~ \begin{exampleblock}{\textattachfile{leghosszabb2.c}{Karakterláncok másolása}}
-    %~ \lstinputlisting[style=c,linerange={5-10},numbers=left,firstnumber=5]{leghosszabb2.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%41
+\begin{frame}{Reading lines}
+  \footnotesize
+  \begin{itemize}
+    \item \texttt{char *strcpy(char *dest, const char *src);} \\
+      \texttt{char *str\kiemel{n}cpy(char *dest, const char *src, size\_t n);}\\
+      Copying characters from \texttt{src} to \texttt{dest}\\
+      They return the address of the result (\texttt{dest}) \\
+      \texttt{strncpy()} copies at most \texttt{n} characters. If \texttt{src} is shorter then \texttt{n} it stores even the terminating \texttt{'\textbackslash 0'} as well \\
+      They \kiemel{do not check} that the result fits at \texttt{dest} or not!
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{longest2.c}{Copying strings}}
+    \lstinputlisting[style=c,linerange={5-10},numbers=left,firstnumber=5]{longest2.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %42
-%~ \begin{frame}[fragile]{Karakterlánc tokenekre bontása}
-  %~ Feladat:
-  %~ \begin{itemize}
-    %~ \item Határozzuk meg egy URL lekérdező karakterláncának kulcs-érték párjait!
-    %~ \item \texttt{http://it.sze.hu/index.php?\kiemel{tart}=\kiemelZ{hirek}\&\kiemel{old}=\kiemelZ{2}}
-  %~ \end{itemize}
-  %~ Mire lesz szükség?
-  %~ \begin{itemize}
-    %~ \item \texttt{char *strtok(char *str, const char *delim);} \\
-      %~ Ha \texttt{str} nem \texttt{NULL}, akkor visszaadja annak első tokenjét. A tokeneket \texttt{delim} karakterei 
-%~ választhatják el egymástól. A további tokenek megállapításához \texttt{str}-nek \texttt{NULL} értékűnek kell lennie. Ha nincs 
-%~ több token, \texttt{NULL} érték visszaadásával jelzi. \texttt{str}-be lánczáró nullákat illeszt a tokenek keresése közben!
-  %~ \end{itemize}
-%~ \end{frame}
+%42
+\begin{frame}[fragile]{Tokenizing a string}
+  Task:
+  \begin{itemize}
+    \item Determine the key--value pairs of an URL query string.
+    \item \texttt{http://it.sze.hu/index.php?\kiemel{tart}=\kiemelZ{hirek}\&\kiemel{old}=\kiemelZ{2}}
+  \end{itemize}
+  What do we need?
+  \begin{itemize}
+    \item \texttt{char *strtok(char *str, const char *delim);} \\
+      If \texttt{str} is not \texttt{NULL} it returns the first token found in it. Tokens may be separated by any of the characters in \texttt{delim}. In order to find the further tokens \texttt{str} must be \texttt{NULL}. If no more tokens \texttt{strtok} returns \texttt{NULL}. Terminating null characters are inserted in \texttt{str} during searcing!
+  \end{itemize}
+\end{frame}
 
-%~ %43
-%~ \begin{frame}{Karakterlánc tokenekre bontása}
-  %~ \scriptsize
-  %~ \begin{exampleblock}{\textattachfile{kulcsertek1.c}{kulcsertek1.c}}
-    %~ \lstinputlisting[style=c,linerange={4-20},numbers=left,firstnumber=4]{kulcsertek1.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%43
+\begin{frame}{Tokenizing a string}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{keyvalue1.c}{keyvalue1.c}}
+    \lstinputlisting[style=c,linerange={4-19},firstnumber=4]{keyvalue1.c}
+  \end{exampleblock}
+\end{frame}
 
-%~ %44
-%~ \begin{frame}{Véletlenszám generálás}
-  %~ \begin{itemize}
-    %~ \item \hiv{\href{https://en.wikipedia.org/wiki/Pseudorandom_number_generator}{Álvéletlen számok}} előállítása 
-%~ (PseudoRandom Number Generator, PRNG)
-    %~ \item Szükséges fejfájl: \texttt{stdlib.h}
-    %~ \item Kezdőérték: \texttt{void srand(unsigned int seed);}, ahol \texttt{seed} a kezdőérték
-    %~ \item Véletlen számok: $0 \leq$ \texttt{int rand(void);} $\leq$ \texttt{RAND\_MAX}
-  %~ \end{itemize}
-  %~ Példák:
-   %~ \begin{itemize}
-     %~ \item \texttt{x = (double)rand()/RAND\_MAX} ahol $\left\{x|x\in\mathbb{R}, 0 \leq x \leq 1 \right\}$
-     %~ \item \texttt{x = MIN + rand()\%(MAX-MIN+1)} ahol $\left\{x|x\in\mathbb{Z}, MIN \leq x \leq MAX \right\}$
-   %~ \end{itemize}
-%~ \end{frame}
+%44
+\begin{frame}{Generating random numbers}
+  \begin{itemize}
+    \item Generating \hiv{\href{https://en.wikipedia.org/wiki/Pseudorandom_number_generator}{pseudo-random numbers}} (PseudoRandom Number Generator, PRNG)
+    \item Required header: \texttt{stdlib.h}
+    \item Initial state: \texttt{void srand(unsigned int seed);}, where \texttt{seed} initializes the generator
+    \item Random numbers: $0 \leq$ \texttt{int rand(void);} $\leq$ \texttt{RAND\_MAX}
+  \end{itemize}
+  Examples:
+   \begin{itemize}
+     \item \texttt{x = (double)rand()/RAND\_MAX} ahol $\left\{x|x\in\mathbb{R}, 0 \leq x \leq 1 \right\}$
+     \item \texttt{x = MIN + rand()\%(MAX-MIN+1)} ahol $\left\{x|x\in\mathbb{Z}, MIN \leq x \leq MAX \right\}$
+   \end{itemize}
+\end{frame}
 
-%~ %45
-%~ \begin{frame}{Véletlenszám generálás}
-  %~ Probléma: azonos \texttt{seed} $\to$ azonos számsorozatok\\
-  %~ Megoldás:
-  %~ \begin{itemize}
-    %~ \item \texttt{seed} minden programindításnál más legyen $\to$ pontos idő
-    %~ \item Szükséges fejfájl: \texttt{time.h}
-    %~ \item \texttt{time\_t time(time\_t *t);}
-    %~ \item V.t. érték: \texttt{time\_t} (\texttt{long}) típusban az 1970-01-01 00:00:00 +0000 (UTC)
-%~ óta eltelt másodpercek száma, amit \texttt{t} címen is eltárol, ha az nem \texttt{NULL}
-  %~ \end{itemize}
-  %~ \vfill
-  %~ \tiny
-  %~ A C++ nyelv \hiv{\href{http://www.cplusplus.com/reference/random/}{sokkal kifinomultabb képességekkel}} rendelkezik.\\
-  %~ \hiv{\href{http://www.cplusplus.com/faq/beginners/random-numbers/}{További tudnivalók}} a véletlenszám generálással 
-%~ kapcsolatban.
-%~ \end{frame}
+%45
+\begin{frame}{Generating random numbers}
+  Problem: same \texttt{seed} $\to$ same number sequences\\
+  Solution:
+  \begin{itemize}
+    \item \texttt{seed} must be different at every program start $\to$ current time
+    \item Required header: \texttt{time.h}
+    \item \texttt{time\_t time(time\_t *t);}
+    \item Return value: expressed with type \texttt{time\_t} (\texttt{long}); seconds elapsed since ``the epoch'', 1970-01-01 00:00:00 +0000 (UTC). It also stores it at \texttt{t} except that is \texttt{NULL}.
+  \end{itemize}
+  \vfill
+  \tiny
+  The C++ language has \hiv{\href{http://www.cplusplus.com/reference/random/}{much more sophistacated capabilities}}.\\
+  \hiv{\href{http://www.cplusplus.com/faq/beginners/random-numbers/}{Further information}} regarding generating random numbers.
+\end{frame}
 
-%~ %46
-%~ \begin{frame}{Véletlenszám generálás}
-  %~ \begin{exampleblock}{\textattachfile{tipp.c}{tipp.c}}
-    %~ \scriptsize
-    %~ \lstinputlisting[style=c]{tipp.c}
-  %~ \end{exampleblock}
-%~ \end{frame}
+%46
+\begin{frame}{Generating random numbers}
+  \begin{exampleblock}{\textattachfile{guess.c}{guess.c}}
+    \scriptsize
+    \lstinputlisting[style=c]{guess.c}
+  \end{exampleblock}
+\end{frame}
 
 \end{document}
