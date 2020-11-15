@@ -134,352 +134,369 @@ After sorting:
   \end{itemize}
 \end{frame}
 
-% %11
-% \begin{frame}{Hallgatói nyilvántartás}
-%   \footnotesize
-%   \begin{exampleblock}{\textattachfile{hallgatok1.c}{hallgatok1.c}}
-%     \lstinputlisting[style=c,linerange={6-9},numbers=left,firstnumber=6]{hallgatok1.c}
-%     \lstinputlisting[style=c,linerange={72-81},numbers=left,firstnumber=72]{hallgatok1.c}
-%   \end{exampleblock}
-% \end{frame}
+%11
+\begin{frame}{Student register}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+    \lstinputlisting[style=c,linerange={6-9},firstnumber=6]{students1.c}
+    \lstinputlisting[style=c,linerange={72-81},firstnumber=72]{students1.c}
+  \end{exampleblock}
+\end{frame}
 
-% %12
-% \begin{frame}{Hallgatói nyilvántartás}
-%   \scriptsize
-%   \begin{exampleblock}{\textattachfile{hallgatok1.c}{hallgatok1.c}}
-%     \lstinputlisting[style=c,linerange={20-38},numbers=left,firstnumber=20]{hallgatok1.c}
-%   \end{exampleblock}
-% \end{frame}
+%12
+\begin{frame}{Student register}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={27-45},firstnumber=27]{students1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %13
-% \begin{frame}{Hallgatói nyilvántartás}
-%   \begin{exampleblock}{\textattachfile{hallgatok1.c}{hallgatok1.c}}
-%     \lstinputlisting[style=c,linerange={40-50},numbers=left,firstnumber=40]{hallgatok1.c}
-%   \end{exampleblock}
-% \end{frame}
+%13
+\begin{frame}{Student register}
+  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+    \lstinputlisting[style=c,linerange={47-57},firstnumber=47]{students1.c}
+  \end{exampleblock}
+\end{frame}
 
-% %14
-% \begin{frame}{Hallgatói nyilvántartás}
-%   \footnotesize
-%   \begin{exampleblock}{\textattachfile{hallgatok1.c}{hallgatok1.c}}
-%     \lstinputlisting[style=c,linerange={52-63},numbers=left,firstnumber=52]{hallgatok1.c}
-%   \end{exampleblock}
-% \end{frame}
+%14
+\begin{frame}{Student register}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+    \lstinputlisting[style=c,linerange={59-70},firstnumber=59]{students1.c}
+  \end{exampleblock}
+\end{frame}
 
-% %15
-% \begin{frame}{Hallgatói nyilvántartás}
-%   \begin{exampleblock}{\textattachfile{hallgatok1.c}{hallgatok1.c}}
-%     \lstinputlisting[style=c,linerange={65-70},numbers=left,firstnumber=65]{hallgatok1.c}
-%   \end{exampleblock}
-% \end{frame}
+%15
+\begin{frame}{Student register}
+  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+    \lstinputlisting[style=c,linerange={20-25},firstnumber=20]{students1.c}
+  \end{exampleblock}
+\end{frame}
 
-% %16
-% \begin{frame}{Számok rendezése}
-%   \small
-%   Feladat:
-%   \begin{itemize}
-%     \item Tegyük még kényelmesebbé a korábbi, számokat rendező programunk használatát azzal, hogy a felhasználónak ne kelljen 
-% előre összeszámolnia, hány adatot kell rendeznie!
-%     \item Jelezze valamilyen speciális érték az adatbevitel végét! $\to$ negatív érték
-%   \end{itemize}
-%   Probléma:
-%   \begin{itemize}
-%     \item[] Mekkora területet foglaljunk, ha azt sem tudjuk, hány adatot kell tárolni?
-%   \end{itemize}
-%   Megoldás:
-%   \begin{itemize}
-%     \item[] Lefoglalunk egy kis memóriablokkot, majd ha ez elfogy, mindig megduplázzuk annak méretét.
-%   \end{itemize}
-%   Megjegyzés:
-%   \begin{itemize}
-%     \item[] Az egyszerűség és tömörség kedvéért a továbbiakban feltételezzük a memóriafoglalások sikerességét.
-%   \end{itemize}
-% \end{frame}
+%16
+\begin{frame}{Sorting numbers}
+  \small
+  Task:
+  \begin{itemize}
+    \item Make the usage of our earlier program more comfortable! 
+    \item Instead of entering the quantity of numbers in advance, let a special value signal the end of input $\to$ negative value
+  \end{itemize}
+  Problem:
+  \begin{itemize}
+    \item[] How much memory should we allocate if we do not know the number of numbers?
+  \end{itemize}
+  Solution \#1:
+  \begin{itemize}
+    \item[] Allocate a small memory block initially and as soon as it is full double its size $\to$ minimizes the number of memory re-allocations (=fast) at the cost of at most half of the allocated area remains unused
+  \end{itemize}
+  Remark:
+  \begin{itemize}
+    \item[] Due to simplicity and brevity we assume that memory allocations are always successful
+  \end{itemize}
+\end{frame}
 
-% %17
-% \begin{frame}{Számok rendezése}
-%   \begin{exampleblock}{\textattachfile{buborek7.c}{buborek7.c}}
-%     \lstinputlisting[style=c,linerange={45-55},numbers=left,firstnumber=45]{buborek7.c}
-%   \end{exampleblock}
-% \end{frame}
+%17
+\begin{frame}{Sorting numbers}
+  \begin{exampleblock}{\textattachfile{bubble7.c}{bubble7.c}}
+    \lstinputlisting[style=c,linerange={45-55},firstnumber=45]{bubble7.c}
+  \end{exampleblock}
+\end{frame}
 
-% %18
-% \begin{frame}{Számok rendezése}
-%   \fontsize{8}{9} \selectfont
-%   \begin{exampleblock}{\textattachfile{buborek7.c}{buborek7.c}}
-%     \lstinputlisting[style=c,linerange={4-24},numbers=left,firstnumber=4]{buborek7.c}
-%   \end{exampleblock}
-% \end{frame}
+%18
+\begin{frame}{Sorting numbers}
+  \fontsize{8}{9} \selectfont
+  \begin{exampleblock}{\textattachfile{bubble7.c}{bubble7.c}}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={4-24},firstnumber=4]{bubble7.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %19
-% \begin{frame}[fragile]{Számok rendezése}
-%   \fontsize{7}{8} \selectfont
-%   \begin{block}{Kimenet}
-%     \begin{verbatim}
-% Adjon meg nemnegativ szamokat!
-%         [Felhasznalva: 0, tombelemek szama: 1]
-% 1. szam: 7
-%         [Felhasznalva: 1, tombelemek szama: 1]
-% 2. szam: 1
-%         [Memoriafoglalas]
-%         [Felhasznalva: 2, tombelemek szama: 2]
-% 3. szam: 9
-%         [Memoriafoglalas]
-%         [Felhasznalva: 3, tombelemek szama: 4]
-% 4. szam: 11
-%         [Felhasznalva: 4, tombelemek szama: 4]
-% 5. szam: 21
-%         [Memoriafoglalas]
-%         [Felhasznalva: 5, tombelemek szama: 8]
-% 6. szam: 67
-%         [Felhasznalva: 6, tombelemek szama: 8]
-% 7. szam: 22
-%         [Felhasznalva: 7, tombelemek szama: 8]
-% 8. szam: 42
-%         [Felhasznalva: 8, tombelemek szama: 8]
-% 9. szam: -1
-% Rendezes utan:
-% 1       7       9       11      21      22      42      67
-% \end{verbatim}
-%   \end{block}
-% \end{frame}
+%19
+\begin{frame}[fragile]{Sorting numbers}
+  \fontsize{7}{8} \selectfont
+  \begin{block}{Output}
+    \begin{verbatim}
+Enter non-negative numbers
+      [Initial memory allocation]
+      [Used: 0, Array size: 1]
+Number #1: 6
+      [Used: 1, Array size: 1]
+Number #2: 5
+      [Memory re-allocation]
+      [Used: 2, Array size: 2]
+Number #3: 4
+      [Memory re-allocation]
+      [Used: 3, Array size: 4]
+Number #4: 3
+      [Used: 4, Array size: 4]
+Number #5: 2
+      [Memory re-allocation]
+      [Used: 5, Array size: 8]
+Number #6: 1
+      [Used: 6, Array size: 8]
+Number #7: 0
+      [Used: 7, Array size: 8]
+Number #8: -1
+After sorting:
+0       1       2       3       4       5       6
+\end{verbatim}
+  \end{block}
+\end{frame}
 
-% %20
-% \begin{frame}{Téglalapok rajzolása}
-%   Feladat:
-%   \begin{itemize}
-%     \item Alakítsuk át a téglalap rajzoló programot is hasonlóan, de most mindig ugyanannyival növeljük a tömb méretét, ha 
-% elfogy a hely!
-%     \item A tömböt lefoglaló és feltöltő függvény adja vissza az elemek számát, a tömb címét pedig írja a paraméterként kapott 
-% címre!
-%   \end{itemize}
-%   \begin{exampleblock}{\textattachfile{teglalap3.c}{teglalap3.c}}
-%     \scriptsize
-%     \lstinputlisting[style=c,linerange={90-97},numbers=left,firstnumber=90]{teglalap3.c}
-%   \end{exampleblock}
-% \end{frame}
+%20
+\begin{frame}{Drawing rectangles}
+  Task:
+  \begin{itemize}
+    \item Modify the rectangle drawing program similarly, too
+    \item Memory allocation strategy \#2: if the allocated area is full, increase its size always with the same amount $\to$ minimizes the unused memory area at the cost of much re-allocations (=slow)
+    \item The function allocating memory for the array returns the number of elements and writes the address of the array where its parameter points to
+  \end{itemize}
+  \begin{exampleblock}{\textattachfile{rectangle3.c}{rectangle3.c}}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={91-98},firstnumber=91]{rectangle3.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %21
-% \begin{frame}{Téglalapok rajzolása}
-%   \begin{exampleblock}{\textattachfile{teglalap3.c}{teglalap3.c}}
-%     \footnotesize
-%     \lstinputlisting[style=c,linerange={59-74},numbers=left,firstnumber=59]{teglalap3.c}
-%   \end{exampleblock}
-% \end{frame}
+%21
+\begin{frame}{Drawing rectangles}
+  \begin{exampleblock}{\textattachfile{rectangle3.c}{rectangle3.c}}
+    \footnotesize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={60-75},firstnumber=60]{rectangle3.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %22
-% \begin{frame}{Téglalapok rajzolása}
-%   \begin{exampleblock}{\textattachfile{teglalap3.c}{teglalap3.c}}
-%     \footnotesize
-%     \lstinputlisting[style=c,linerange={75-88},numbers=left,firstnumber=75]{teglalap3.c}
-%   \end{exampleblock}
-% \end{frame}
+%22
+\begin{frame}{Drawing rectangles}
+  \begin{exampleblock}{\textattachfile{rectangle3.c}{rectangle3.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={76-91},firstnumber=76]{rectangle3.c}
+  \end{exampleblock}
+\end{frame}
 
-% %23
-% \begin{frame}[fragile]{Téglalapok rajzolása}
-%   \begin{columns}[T]
-%     \column{0.6\textwidth}
-%       \begin{block}{Kimenet 1/2}
-%         \tiny
-%         \begin{verbatim}
-% Rajzprogram - adja meg a téglalapok adatait!
-%         [Felhasznalva: 0, elemszam: 2]
-% 1. teglalap BF sarok X: [0, 78] (negativra vege) 3
-% 1. teglalap BF sarok Y: [0, 23] 3
-% 1. teglalap JA sarok X: [4, 79] 6
-% 1. teglalap JA sarok Y: [4, 24] 6
-% 1. teglalap rajzoló karaktere: +
-%         [Felhasznalva: 1, elemszam: 2]
-% 2. teglalap BF sarok X: [0, 78] (negativra vege) 5
-% 2. teglalap BF sarok Y: [0, 23] 5
-% 2. teglalap JA sarok X: [6, 79] 8
-% 2. teglalap JA sarok Y: [6, 24] 8
-% 2. teglalap rajzoló karaktere: -
-%         [Felhasznalva: 2, elemszam: 2]
-% 3. teglalap BF sarok X: [0, 78] (negativra vege) 7
-%         [Memoriafoglalas]
-% 3. teglalap BF sarok Y: [0, 23] 7
-% 3. teglalap JA sarok X: [8, 79] 10
-% 3. teglalap JA sarok Y: [8, 24] 10
-% 3. teglalap rajzoló karaktere: *
-%         [Felhasznalva: 3, elemszam: 4]
-% 4. teglalap BF sarok X: [0, 78] (negativra vege) -1
-% \end{verbatim}
-%       \end{block}
-%     \column{0.4\textwidth}
-%       \begin{block}{Kimenet 2/2}
-%         \begin{verbatim}
-%    ++++                                                                         
-%    ++++                                                                         
-%    ++----                                                                       
-%    ++----                                                                       
-%      --****                                                                     
-%      --****                                                                     
-%        ****                                                                     
-%        ****
-% \end{verbatim}
-%       \end{block}
-%   \end{columns}
-% \end{frame}
+%23
+\begin{frame}[fragile]{Drawing rectangles}
+  \begin{columns}[T]
+    \column{0.75\textwidth}
+      \begin{block}{Output 1/2}
+        \tiny
+        \begin{verbatim}
+  Please enter the data of rectangles!
+          [Initial memory allocation]
+          [Used: 0, Array size: 2]
+  X coordinate of the top left corner of rectangle #1 [0, 78] (exits to a negative value) 3
+  Y coordinate of the top left corner rectangle #1 [0, 23] 3
+  X coordinate of the bottom right corner rectangle #1 [4, 79] 6
+  Y coordinate of the bottom right corner rectangle #1 [4, 24] 6
+  Drawing character of rectangle #1: +
+          [Used: 1, Array size: 2]
+  X coordinate of the top left corner of rectangle #2 [0, 78] (exits to a negative value) 5
+  Y coordinate of the top left corner rectangle #2 [0, 23] 5
+  X coordinate of the bottom right corner rectangle #2 [6, 79] 8
+  Y coordinate of the bottom right corner rectangle #2 [6, 24] 8
+  Drawing character of rectangle #2: -
+          [Used: 2, Array size: 2]
+  X coordinate of the top left corner of rectangle #3 [0, 78] (exits to a negative value) 7
+          [Memory re-allocation]
+  Y coordinate of the top left corner rectangle #3 [0, 23] 7
+  X coordinate of the bottom right corner rectangle #3 [8, 79] 10
+  Y coordinate of the bottom right corner rectangle #3 [8, 24] 10
+  Drawing character of rectangle #3: *
+          [Used: 3, Array size: 4]
+  X coordinate of the top left corner of rectangle #4 [0, 78] (exits to a negative value) -1
+\end{verbatim}
+      \end{block}
+    \column{0.25\textwidth}
+      \begin{block}{Output 2/2}
+        \begin{verbatim}
+   ++++                                                                         
+   ++++                                                                         
+   ++----                                                                       
+   ++----                                                                       
+     --****                                                                     
+     --****                                                                     
+       ****                                                                     
+       ****
+\end{verbatim}
+      \end{block}
+  \end{columns}
+\end{frame}
 
-% %24
-% \begin{frame}{Mátrixok}
-%   Mátrix: azonos típusú elemek kétdimenziós tömbje\\
-%   A C-ben csak egydimenziós tömbök léteznek, de ezeket tetszőleges mélységben egymásba lehet ágyazni! $\to$ \\
-%   \qquad mátrix = vektorokból álló vektor\\
-%   \begin{columns}[T]
-%     \column{0.5\textwidth}
-%       \hspace{.25cm} $A = \left[ \begin{array}{cccc}
-%                      11 & 12 & 13 & 14 \\
-%                      21 & 22 & 23 & 24 \\
-%                      31 & 32 & 33 & 34 \\
-%                    \end{array}
-%                 \right]$
-%     \column{0.5\textwidth}
-%       \texttt{int A[3][4] = \{ \\
-%       \qquad \{11, 12, 13, 14\},\\
-%       \qquad \{21, 22, 23, 24\},\\
-%       \qquad \{31, 32, 33, 34\} \};}
-%   \end{columns}
-%   \begin{center}
-%     \includegraphics[width=0.85\textwidth]{matrix.pdf}
-%   \end{center}
-%   Mátrixok összeadása: $(A+B)[i,j] = A[i,j] + B[i,j]$, ahol $A$ és $B$ két $n\times m$ méretű mátrix.\\
-% \end{frame}
+%24
+\begin{frame}{Matrices}
+  \small
+  Matrix: two dimensional array of data of the same type\\
+  Only one dimensional arrays exist in C, but these can be embedded into each other $\to$ \\
+  \qquad matrix = vector of vectors\\
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \hspace{.25cm} $A = \left[ \begin{array}{cccc}
+                     11 & 12 & 13 & 14 \\
+                     21 & 22 & 23 & 24 \\
+                     31 & 32 & 33 & 34 \\
+                   \end{array}
+                \right]$
+    \column{0.5\textwidth}
+      \texttt{int A[3][4] = \{ \\
+      \qquad \{11, 12, 13, 14\},\\
+      \qquad \{21, 22, 23, 24\},\\
+      \qquad \{31, 32, 33, 34\} \};}
+  \end{columns}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{matrix.pdf}
+  \end{center}
+  Adding up two matrices: $(A+B)[i,j] = A[i,j] + B[i,j]$, where $A$ and $B$ are $n\times m$ sized matrices.\\
+\end{frame}
 
-% %25
-% \begin{frame}{Mátrixok}
-%   \begin{exampleblock}{\textattachfile{mtxOsszead1.c}{mtxOsszead1.c}}
-%     \scriptsize
-%     \lstinputlisting[style=c,linerange={4-20},numbers=left,firstnumber=4]{mtxOsszead1.c}
-%   \end{exampleblock}
-% \end{frame}
+%25
+\begin{frame}{Matrices}
+  \begin{exampleblock}{\textattachfile{mtxAdd1.c}{mtxAdd1.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={4-20},firstnumber=4]{mtxAdd1.c}
+  \end{exampleblock}
+\end{frame}
 
-% %26
-% \begin{frame}{Mátrixok}
-%   \scriptsize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead1.c}{mtxOsszead1.c}}
-%     \scriptsize
-%     \lstinputlisting[style=c,linerange={21-40},numbers=left,firstnumber=21]{mtxOsszead1.c}
-%   \end{exampleblock}
-% \end{frame}
+%26
+\begin{frame}{Matrices}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{mtxAdd1.c}{mtxAdd1.c}}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={21-40},firstnumber=21]{mtxAdd1.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %27
-% \begin{frame}[fragile]{Mátrixok}
-%   \begin{block}{Kimenet}
-%     \begin{verbatim}
-% 11 12 13 14   33 49 36 12   44 61 49 26 
-% 21 22 23 24 + 20 45 24 18 = 41 67 47 42 
-% 31 32 33 34   19 10 11 42   50 42 44 76
-% \end{verbatim}
-%   \end{block}
-%   \vfill
-%   Hogyan adható át egy mátrix függvénynek?\\
-%   \begin{exampleblock}{OK \checkmark}
-%     \texttt{void fv(int t[SOROK][OSZLOPOK]) \{ //...\\
-%     void fv(int t[][OSZLOPOK]) \{ //...\\
-%     void fv(int (*t)[OSZLOPOK]) \{ //...}
-%   \end{exampleblock}
-%   \begin{alertblock}{Hiba X -- Ez mutatótömb, nem mátrix!}
-%     \texttt{void fv(int *t[OSZLOPOK]) \{ //...}
-%   \end{alertblock}
-% \end{frame}
+%27
+\begin{frame}[fragile]{Matrices}
+  \begin{block}{(A possible) output}
+    \begin{verbatim}
+11 12 13 14   33 49 36 12   44 61 49 26 
+21 22 23 24 + 20 45 24 18 = 41 67 47 42 
+31 32 33 34   19 10 11 42   50 42 44 76
+\end{verbatim}
+  \end{block}
+  \vfill
+  How can a matrix be passed to a function?\\
+  \begin{exampleblock}{OK \checkmark}
+    \texttt{void fn(int m[ROWS][COLS]) \{ //...\\
+    void fn(int m[][COLS]) \{ //...\\
+    void fn(int (*m)[COLS]) \{ //...}
+  \end{exampleblock}
+  \begin{alertblock}{Error X -- It is an array of pointers, not a matrix!}
+    \texttt{void fn(int *m[COLS]) \{ //...}
+  \end{alertblock}
+\end{frame}
 
-% %28
-% \begin{frame}{Mátrixok}
-%   \begin{exampleblock}{\textattachfile{mtxOsszead2.c}{mtxOsszead2.c}}
-%     \lstinputlisting[style=c,linerange={44-56},numbers=left,firstnumber=44]{mtxOsszead2.c}
-%   \end{exampleblock}
-% \end{frame}
+%28
+\begin{frame}{Matrices}
+  \begin{exampleblock}{\textattachfile{mtxAdd2.c}{mtxAdd2.c}}
+    \lstinputlisting[style=c,linerange={44-56},firstnumber=44]{mtxAdd2.c}
+  \end{exampleblock}
+\end{frame}
 
-% %29
-% \begin{frame}{Mátrixok}
-%   \scriptsize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead2.c}{mtxOsszead2.c}}
-%     \scriptsize
-%     \lstinputlisting[style=c,linerange={4-23},numbers=left,firstnumber=4]{mtxOsszead2.c}
-%   \end{exampleblock}
-% \end{frame}
+%29
+\begin{frame}{Matrices}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{mtxAdd2.c}{mtxAdd2.c}}
+    \scriptsize
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={4-23},firstnumber=4]{mtxAdd2.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %30
-% \begin{frame}{Mátrixok}
-%   \scriptsize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead2.c}{mtxOsszead2.c}}
-%     \scriptsize
-%     \lstinputlisting[style=c,linerange={25-42},numbers=left,firstnumber=25]{mtxOsszead2.c}
-%   \end{exampleblock}
-% \end{frame}
+%30
+\begin{frame}{Matrices}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{mtxAdd2.c}{mtxAdd2.c}}
+    \scriptsize
+    \lstinputlisting[style=c,linerange={25-42},firstnumber=25]{mtxAdd2.c}
+  \end{exampleblock}
+\end{frame}
 
-% %31
-% \begin{frame}{Mátrixok}
-%   \begin{columns}[T]
-%     \column{.5\textwidth}
-%       Probléma:
-%       \begin{itemize}
-%         \item[] rugalmatlan függvények, mert az oszlopok száma rögzített
-%       \end{itemize}
-%       \vfill
-%       Megoldás:
-%       \begin{itemize}
-%         \item hozzunk létre dinamikusan vektorokat (pl. \texttt{int*}-gal címezhetők), majd 
-%         \item ezek címeit tároljuk egy újabb, dinamikus vektorban (\texttt{int**}, mutatótömb)!
-%       \end{itemize}
-%     \column{.5\textwidth}
-%       \includegraphics[width=\textwidth]{matrix2.pdf}
-%   \end{columns}
-% \end{frame}
+%31
+\begin{frame}{Matrices}
+  \begin{columns}[T]
+    \column{.5\textwidth}
+      Problem:
+      \begin{itemize}
+        \item[] inflexible functions, the number of columns is fixed
+      \end{itemize}
+      \vfill
+      Solution:
+      \begin{itemize}
+        \item create vectors dynamically (can be addressed by eg. \texttt{int*}), then 
+        \item store their addresses in another dynamic vector (\texttt{int**}, array of pointers)!
+      \end{itemize}
+    \column{.5\textwidth}
+      \includegraphics[width=\textwidth]{matrix2.pdf}
+  \end{columns}
+\end{frame}
 
-% %32
-% \begin{frame}{Mátrixok}
-%   \footnotesize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead3.c}{mtxOsszead3.c}}
-%     \lstinputlisting[style=c,linerange={55-70},numbers=left,firstnumber=55]{mtxOsszead3.c}
-%   \end{exampleblock}
-% \end{frame}
+%32
+\begin{frame}{Matrices}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{mtxAdd3.c}{mtxAdd3.c}}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={55-70},firstnumber=55]{mtxAdd3.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %33
-% \begin{frame}{Mátrixok}
-%   \begin{exampleblock}{\textattachfile{mtxOsszead3.c}{mtxOsszead3.c}}
-%     \footnotesize
-%     \lstinputlisting[style=c,linerange={5-19},numbers=left,firstnumber=5]{mtxOsszead3.c}
-%   \end{exampleblock}
-% \end{frame}
+%33
+\begin{frame}{Matrices}
+  \begin{exampleblock}{\textattachfile{mtxAdd3.c}{mtxAdd3.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={5-19},firstnumber=5]{mtxAdd3.c}
+  \end{exampleblock}
+\end{frame}
 
-% %34
-% \begin{frame}{Mátrixok}
-%   \begin{exampleblock}{\textattachfile{mtxOsszead3.c}{mtxOsszead3.c}}
-%     \footnotesize
-%     \lstinputlisting[style=c,linerange={21-28},numbers=left,firstnumber=21]{mtxOsszead3.c}
-%     \lstinputlisting[style=c,linerange={48-53},numbers=left,firstnumber=49]{mtxOsszead3.c}
-%   \end{exampleblock}
-% \end{frame}
+%34
+\begin{frame}{Matrices}
+  \begin{exampleblock}{\textattachfile{mtxAdd3.c}{mtxAdd3.c}}
+    \footnotesize
+    \lstinputlisting[style=c,linerange={21-28},firstnumber=21]{mtxAdd3.c}
+    \lstinputlisting[style=c,linerange={48-53},firstnumber=49]{mtxAdd3.c}
+  \end{exampleblock}
+\end{frame}
 
-% %35
-% \begin{frame}{Mátrixok}
-%   Alternatív megoldás:
-%   \begin{itemize}
-%     \item utánozzuk a ``statikus'' tömbök memóriabeli szerkezetét, azaz
-%     \item valójában vektornak foglalunk helyet, és erre képezzük le a mátrix elemeit
-%   \end{itemize}
-%   \begin{center}
-%     \includegraphics[scale=0.6]{matrix3.pdf}
-%   \end{center}
-% \end{frame}
+%35
+\begin{frame}{Matrices}
+  Alternative solution:
+  \begin{itemize}
+    \item we can mimic the stucture of ,,static'' arrays in memory, thus
+    \item we allocate memory for a vector and map the elements of the matrix to this area
+  \end{itemize}
+  \begin{center}
+    \includegraphics[scale=0.6]{matrix3.pdf}
+  \end{center}
+\end{frame}
 
-% %36
-% \begin{frame}{Mátrixok}
-%   \footnotesize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead4.c}{mtxOsszead4.c}}
-%     \lstinputlisting[style=c,linerange={44-59},numbers=left,firstnumber=44]{mtxOsszead4.c}
-%   \end{exampleblock}
-% \end{frame}
+%36
+\begin{frame}{Matrices}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{mtxAdd4.c}{mtxAdd4.c}}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={44-59},firstnumber=44]{mtxAdd4.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
-% %37
-% \begin{frame}{Mátrixok}
-%   \scriptsize
-%   \begin{exampleblock}{\textattachfile{mtxOsszead4.c}{mtxOsszead4.c}}
-%     \lstinputlisting[style=c,linerange={5-24},numbers=left,firstnumber=5]{mtxOsszead4.c}
-%   \end{exampleblock}
-% \end{frame}
+%37
+\begin{frame}{Matrices}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{mtxAdd4.c}{mtxAdd4.c}}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c,linerange={5-24},firstnumber=5]{mtxAdd4.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
 
 \end{document}
