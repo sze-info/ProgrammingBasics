@@ -15,7 +15,7 @@
 \begin{frame}{Sorting numbers}
   Task:
   \begin{itemize}
-    \item Improve the existing bubble sort program! Let the user enter the numbers to be sorted! The input reading should be finished by entering a negative number.
+    \item Improve the existing bubble sort program! Let the user enter the numbers to be sorted! Finish reading the input by entering a negative number.
     \item Entering more numbers than the size of the array must be prevented.
   \end{itemize}
   Problems:
@@ -34,108 +34,105 @@
       \begin{block}{Output1}
         \small
         \begin{verbatim}
-Enter non-negative numbers!
-1. number: 2
-2. number: 4
-3. number: 1
-4. number: 3
-5. number: -1
+Enter non-negative numbers
+Number #1: 2
+Number #2: 4
+Number #3: 1
+Number #4: 3
+Number #5: -1
 After sorting:
-1       2       3       4       
+1       2       3       4    
 \end{verbatim}
       \end{block}
     \column{.45\textwidth}
       \begin{block}{Output2}
         \small
         \begin{verbatim}
-Enter non-negative numbers!
-1. number: 5
-2. number: 4
-3. number: 3
-4. number: 2
-5. number: 1
+Enter non-negative numbers
+Number #1: 5
+Number #2: 4
+Number #3: 3
+Number #4: 2
+Number #5: 1
 After sorting:
-1       2       3       4       5       
+1       2       3       4       5    
 \end{verbatim}
       \end{block}
   \end{columns}
 \end{frame}
 
-% %4
-% \begin{frame}{Számok rendezése}
-%   \begin{exampleblock}{\textattachfile{buborek5.c}{buborek5.c}}
-%     \lstinputlisting[style=c,linerange={3-3},numbers=left,firstnumber=3]{buborek5.c}
-%     \lstinputlisting[style=c,linerange={37-46},numbers=left,firstnumber=37]{buborek5.c}
-%   \end{exampleblock}
-% \end{frame}
+%4
+\begin{frame}{Sorting numbers}
+  \begin{exampleblock}{\textattachfile{bubble5.c}{bubble5.c}}
+    \lstinputlisting[style=c,linerange={3-3},numbers=left,firstnumber=3]{bubble5.c}
+    \lstinputlisting[style=c,linerange={37-46},numbers=left,firstnumber=37]{bubble5.c}
+  \end{exampleblock}
+\end{frame}
 
-% %5
-% \begin{frame}{Számok rendezése}
-%   \begin{exampleblock}{\textattachfile{buborek5.c}{buborek5.c}}
-%     \lstinputlisting[style=c,linerange={5-16},numbers=left,firstnumber=5]{buborek5.c}
-%   \end{exampleblock}
-% \end{frame}
+%5
+\begin{frame}{Sorting numbers}
+  \begin{exampleblock}{\textattachfile{bubble5.c}{bubble5.c}}
+    \lstinputlisting[style=c,linerange={5-16},numbers=left,firstnumber=5]{bubble5.c}
+  \end{exampleblock}
+\end{frame}
 
-% %6
-% \begin{frame}{Dinamikus memóriakezelés}
-%   \begin{itemize}
-%     \small
-%     \item A programozó dönt a dinamikus változók élettartamáról
-%     \item Bekapcsolandó az \texttt{stdlib.h} fejfájl
-%     \item Memória foglalás:\\
-%       \begin{itemize}
-%         \item \texttt{void *malloc(size\_t size);} \\
-%           Lefoglal \texttt{size} bájt memóriát, és a terület címét adja vissza, mely \emph{inicializálatlan}.
-%         \item \texttt{void *calloc(size\_t nmemb, size\_t size);} \\
-%           Lefoglal \texttt{nmemb} darab, egyenként \texttt{size} bájt adat tárolására alkalmas, összefüggő memóriaterületet, 
-% majd ennek címét szolgáltatja. A területet kinullázza.
-%         \item \texttt{void *realloc(void *ptr, size\_t size);} \\
-%           A korábban foglalt terület átméretezése, a régi tartalom érintetlenül hagyásával.
-%       \end{itemize}
-%     \item Sikertelen memóriafoglalás esetén NULL értéket kapunk $\to$ ellenőrizni kell
-%     \item Terület felszabadítása: \texttt{void free(void *ptr);}
-%     \item Ugyanaz a terület nem szabadítható fel többször
-%     \item NULL mutató felszabadítása nem okoz gondot
-%   \end{itemize}
-% \end{frame}
+%6
+\begin{frame}{Dynamic memory allocation}
+  \begin{itemize}
+    \small
+    \item The programmer decides the lifetime of dynamic variables
+    \item \texttt{stdlib.h} must be included
+    \item Memory allocation:\\
+      \begin{itemize}
+        \item \texttt{void *malloc(size\_t size);} \\
+          Allocates \texttt{size} bytes of memory and returns its address. The allocated area is \emph{uninitialized}.
+        \item \texttt{void *calloc(size\_t nmemb, size\_t size);} \\
+          Allocates and returns the address of a continuous memory area for an array containing \texttt{nmemb} elements, each of which requires \texttt{size} bytes of memory. The area is \emph{initialized to zeros}.
+        \item \texttt{void *realloc(void *ptr, size\_t size);} \\
+          Resizing the already allocated memory area without modifying the stored content.
+      \end{itemize}
+    \item The return value is NULL in case of an error $\to$ should be checked
+    \item Freeing memory: \texttt{void free(void *ptr);}
+    \item The same meory area cannot be freed several times
+    \item Freeing NULL does not cause problems
+  \end{itemize}
+\end{frame}
 
-% %7
-% \begin{frame}{Számok rendezése}
-%   Feladat:
-%   \begin{itemize}
-%     \item Foglaljunk dinamikusan memóriát a rendezendő számokat tároló tömbnek!
-%     \item Először kérdezzük meg a rendezendő elemek számát, foglaljunk le pontosan annyi memóriát, amennyire szükség van, majd 
-% csak ez után olvassuk be az adatokat!
-%     \item Ne feledkezzünk el a memória mielőbbi felszabadításáról sem!
-%   \end{itemize}
-% \end{frame}
+%7
+\begin{frame}{Sorting numbers}
+  Tasks:
+  \begin{itemize}
+    \item Allocate memory dynamically for the array containing the numbers to be sorted
+    \item Enter the count of numbers first, then allocate the required amount of memory and read the numbers
+    \item Do not forget to free the allocated area as soon as possible
+  \end{itemize}
+\end{frame}
 
-% %8
-% \begin{frame}{Számok rendezése}
-%   \begin{exampleblock}{\textattachfile{buborek6.c}{buborek6.c}}
-%     \lstinputlisting[style=c,linerange={34-42},numbers=left,firstnumber=34]{buborek6.c}
-%   \end{exampleblock}
-% \end{frame}
+%8
+\begin{frame}{Sorting numbers}
+  \begin{exampleblock}{\textattachfile{bubble6.c}{bubble6.c}}
+    \lstinputlisting[style=c,linerange={34-42},firstnumber=34]{bubble6.c}
+  \end{exampleblock}
+\end{frame}
 
-% %9
-% \begin{frame}{Számok rendezése}
-%   \footnotesize
-%   \begin{exampleblock}{\textattachfile{buborek6.c}{buborek6.c}}
-%     \lstinputlisting[style=c,linerange={4-13},numbers=left,firstnumber=4]{buborek6.c}
-%   \end{exampleblock}
-% \end{frame}
+%9
+\begin{frame}{Sorting numbers}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{bubble6.c}{bubble6.c}}
+    \lstinputlisting[style=c,linerange={4-13},firstnumber=4]{bubble6.c}
+  \end{exampleblock}
+\end{frame}
 
-% %10
-% \begin{frame}{Hallgatói nyilvántartás}
-%   Feladat:
-%   \begin{itemize}
-%     \item Tartsuk nyilván hallgatók nevét és az elért osztályzatukat!
-%     \item Előre kérjük be, hogy hány hallgató van, és pontosan annyi memóriát foglaljunk, amennyi éppen elegendő a név-jegy 
-% párokat tároló struktúratömb elhelyezéséhez!
-%     \item Még a név betűinek se foglaljunk több memóriát, mint amennyi feltétlenül szükséges!
-%     \item A listát név szerint rendezetten jelenítsük meg!
-%   \end{itemize}
-% \end{frame}
+%10
+\begin{frame}{Student register}
+  Tasks:
+  \begin{itemize}
+    \item Record the names and grades of students (one grade per student)
+    \item Read the number of students first, then allocate the required amount of memory to store an array of name-grade structures
+    \item Allocate memory dynamically even for the names!
+    \item Sort the list according to the names and display it
+  \end{itemize}
+\end{frame}
 
 % %11
 % \begin{frame}{Hallgatói nyilvántartás}

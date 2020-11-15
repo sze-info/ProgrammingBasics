@@ -2,45 +2,45 @@
 #include <iso646.h>
 #define MAX 5
 
-int beolvas(int* szamok) {
-  int uj, hasznal = 0;
+int read(int* numbers) {
+  int current, used = 0;
   do {
-    printf("%d. szam: ", hasznal + 1);
-    scanf("%d", &uj);
-    if(uj>=0 and hasznal<MAX) {
-      *(szamok + hasznal) = uj;
-      hasznal++;
+    printf("Number #%d: ", used + 1);
+    scanf("%d", &current);
+    if(current>=0 and used<MAX) {
+      *(numbers + used) = current;
+      used++;
     }
-  } while(uj>=0 and hasznal<MAX);
-  return hasznal;
+  } while(current>=0 and used<MAX);
+  return used;
 }
 
-void buborek(int* t, int n) {
-  for(int i=n-1; i>=1; i--) {
-    for(int k=0; k<i; k++) {
-      if(t[k] > t[k+1]) {
-        int csere = t[k];
-        t[k] = t[k+1];
-        t[k+1] = csere;
+void bubble(int* a, int n) {
+  for(int e=n-1; e>=1; e--) {
+    for(int b=0; b<e; b++) {
+      if(a[b] > a[b+1]) {
+        int swap = a[b];
+        a[b] = a[b+1];
+        a[b+1] = swap;
       }
     }
   }
 }
 
-void tombKiir(const int* t, int n) {
-  for(const int* vege=t+n; t<vege; t++) {
-    printf("%d\t", *t);
+void printArray(const int* a, int n) {
+  for(const int* end=a+n; a<end; a++) {
+    printf("%d\t", *a);
   }
-  putchar('\n');
+  printf("\n");
 }
 
 int main(void) {
-  int hasznal; // Ennyi elemet hasznalunk eppen
-  int szamok[MAX];
-  printf("Adjon meg nemnegativ szamokat!\n");
-  hasznal = beolvas(szamok);
-  buborek(szamok, hasznal);
-  printf("Rendezes utan:\n");
-  tombKiir(szamok, hasznal);
+  int used; // Number of used array elements
+  int numbers[MAX];
+  printf("Enter non-negative numbers\n");
+  used = read(numbers);
+  bubble(numbers, used);
+  printf("After sorting:\n");
+  printArray(numbers, used);
   return 0;
 }
