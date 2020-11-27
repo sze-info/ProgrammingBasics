@@ -1,0 +1,535 @@
+\documentclass[usenames,dvipsnames,aspectratio=169]{beamer}
+\usepackage{../common/prgBasics}
+
+\title[Lecture 13.]{Programming basics}
+\subtitle{(GKNB\_INTA023)}
+
+\begin{document}
+
+%1
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%2
+\begin{frame}[fragile]{Command line arguments}
+  At the execution of a program in command line space separated \emph{arguments} can be passed to the program to influence its behavior.
+  \begin{block}{Listing directory contents -- succint format}
+    \fontsize{7}{8} \selectfont
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture10$ ls
+cities1.c      lecture10.log         lecture10.tex   operation1.c  roster1.pdf  sagrada.jpg
+cities2.c      lecture10.nav         lecture10.toc   operation2.c  roster1.svg
+cities3.c      lecture10.out         lecture10.vrb   operation3.c  roster2.c   
+\end{verbatim}
+  \end{block}
+  \begin{block}{Listing directory contents -- long format}
+    \fontsize{7}{8} \selectfont
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture10$ ls -l
+összesen 1484
+-rw-rw-r-- 1 wajzy wajzy   1455 nov   21 18:09 cities1.c
+-rw-rw-r-- 1 wajzy wajzy   1507 nov   21 18:09 cities2.c
+-rw-rw-r-- 1 wajzy wajzy   1403 nov   21 18:09 cities3.c      
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+%3
+\begin{frame}[fragile]{Command line arguments}
+  Task: write a program that lists its arguments.
+  \begin{block}{Output 1}
+    \scriptsize
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture13$ 
+./args1 one two three "contains space"
+Name of the started program: ./args1
+Arg. #1: one
+Arg. #2: two
+Arg. #3: three
+Arg. #4: contains space
+\end{verbatim}
+  \end{block}
+  \begin{block}{Output 2}
+    \scriptsize
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture13$ ./args1
+Name of the started program: ./args1
+No command line arguments were given.
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+%4
+\begin{frame}{Command line arguments}
+  \begin{exampleblock}{Formal parameters of \texttt{main}}
+    int main(int \kiemel{argc}, char* \kiemel{argv}[]) \{ /* ... */ \}\\
+    int main(int \kiemel{argc}, char** \kiemel{argv}) \{ /* ... */ \}
+  \end{exampleblock}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{description}[mm]
+        \item[argc] \hfill \\
+          The number of command line arguments (\kiemel{arg}ument \kiemel{c}ount), including the name of the program
+        \item[argv] \hfill \\
+          Array of pointers to strings (\kiemel{arg}ument \kiemel{v}ector)
+      \end{description}
+    \column{0.5\textwidth}
+      \begin{center}
+        \includegraphics[width=.9\textwidth]{main.pdf}
+      \end{center}
+  \end{columns}
+\end{frame}
+
+%5
+\begin{frame}{Command line arguments}
+  \begin{exampleblock}{\textattachfile{args1.c}{args1.c}}
+    \footnotesize
+    \lstinputlisting[style=c]{args1.c}
+  \end{exampleblock}
+\end{frame}
+
+%6
+\begin{frame}{Command line arguments}
+  \begin{exampleblock}{\textattachfile{args2.c}{args2.c}}
+    \footnotesize
+    \lstinputlisting[style=c]{args2.c}
+  \end{exampleblock}
+\end{frame}
+
+%7
+\begin{frame}{Command line arguments}
+  \begin{description}[mm]
+    \item[Task] \hfill \\ Generating a random number in an interval specified by its bounds
+    \item[Problem] \hfill \\ Type of command line arguments is not apropriate (strings instead of integers)
+    \item[Solution] \hfill \\ Using the \texttt{atoi} function (\kiemel{A}SCII \kiemel{to i}nt)
+  \end{description}
+\end{frame}
+
+%8
+\begin{frame}{Command line arguments}
+  \begin{exampleblock}{\textattachfile{args3.c}{args3.c}}
+    \scriptsize
+    \lstinputlisting[style=c]{args3.c}
+  \end{exampleblock}
+\end{frame}
+
+%9
+\begin{frame}{High-level input and output}
+  \begin{description}[mm]
+    \item[Task] \hfill \\
+      Write a program that prints the content of a text file specified on the command line
+    \item[Solution] \hfill \\
+      Usage of high-level I/O (operating system independent, portable solution but only the most important services can be used). Different sources and destinations of data series (eg. files, keyboard, screen, printer) are handled in the same way, with \emph{streams}.
+  \end{description}
+  Steps of file handling:
+  \begin{enumerate}
+    \item Opening the stream (of appropriate type)
+    \item Performing i/o operations
+    \item Closing the stream
+  \end{enumerate}
+  \footnotesize
+  The streams \texttt{stdin} (\kiemel{st}an\kiemel{d}ard \kiemel{in}put), \texttt{stdout} (\kiemel{st}an\kiemel{d}ard \kiemel{out}put) and \texttt{stderr} (\kiemel{st}an\kiemel{d}ard \kiemel{err}or) are \kiemel{automatically} opened and closed
+\end{frame}
+
+%10
+\begin{frame}{High-level input and output}
+  \begin{exampleblock}{\textattachfile{read1.c}{read1.c} -- Reading a file character by character}
+    \scriptsize
+    \lstinputlisting[style=c]{read1.c}
+  \end{exampleblock}
+\end{frame}
+
+%11
+\begin{frame}{High-level input and output}
+  Opening a stream\\
+  \footnotesize
+  \texttt{FILE *fopen(const char *pathname, const char *mode);} \\
+  \begin{description}[mm]
+    \item[\texttt{FILE*}] \hfill \\
+      Address of a structure containing the data of a stream, or \texttt{NULL} in case of error
+    \item[\texttt{pathname}] \hfill \\
+      Name of the file (the maximum length is \texttt{FILENAME\_MAX} characters)
+    \item[\texttt{mode}] \hfill \\
+      Opening mode (flags that can be combined)
+  \end{description}
+  \scriptsize
+  \begin{tabular}{ll}
+  Mode flag & Effect\\ \hline
+  r & reading from the beginning of the stream\\
+  w & overwriting (deleting of the existing file) then writing from the beginning of the stream\\
+  a & appending (writing at the end of the stream). Creates the stream if it does not exist.\\
+  r+ & renew (update): reading and writing from the beginning of the stream\\
+  w+ & deleting an existing file then opening for renewing at the beginning\\
+  a+ & reading from the beginning and appending. Creates the stream if it does not exist.\\
+  \end{tabular}
+\end{frame}
+
+%12
+\begin{frame}{High-level input and output}
+  \begin{itemize}
+    \item Further possible characters of \texttt{mode}: \texttt{t} (text) and \texttt{b} (binary)
+    \item Text mode: \emph{translation} on Microsoft OS-es (CR-LF~$\leftrightarrow$~LF), file end character (0x1A)
+    \item Eg.: \texttt{"rt+"}, \texttt{"r+t"} (\texttt{t} and \texttt{b} can be anywhere after the first character, default: \texttt{t})
+    \item Before changing the direction of data flow (input $\leftrightarrow$ output) a positioning function, eg. \texttt{fseek()} must be called
+  \end{itemize}
+\end{frame}
+
+%13
+\begin{frame}{High-level input and output}
+  Reading one character\\
+  \footnotesize
+  \texttt{int fgetc(FILE *stream);} \\
+  \begin{description}[mm]
+    \item[Return value] \hfill \\
+      The read character or \texttt{EOF} in case of reaching the end of file or error
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier
+  \end{description}
+  \normalsize
+  Closing the stream\\
+  \footnotesize
+  \texttt{int fclose(FILE *stream);} \\
+  \begin{description}[mm]
+    \item[Return value] \hfill \\
+      0 or \texttt{EOF} in case of an error
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier
+  \end{description}
+  \normalsize
+  Formatted printing in a file\\
+  \footnotesize
+  \texttt{int fprintf(FILE *stream, const char *format, ...);} \\
+  \begin{description}[mm]
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier (\texttt{printf} always prints to \texttt{stdout})
+  \end{description}
+\end{frame}
+
+%14
+\begin{frame}[fragile]{High-level input and output}
+  \begin{block}{The output of our program}
+    \footnotesize
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture13$ 
+./read1 guns.txt 
+She's got a smile it seems to me
+Reminds me of childhood memories
+Where everything
+Was as fresh as the bright blue sky
+Now and then when I see her face
+\end{verbatim}
+  \end{block}
+  \begin{block}{The output of \texttt{cat} (con\kiemelN{cat}enate files and print)}
+    \footnotesize
+    \begin{verbatim}
+wajzy@lenovo:~/Dokumentumok/gknb_inta023/ProgrammingBasics/lectures/lecture13$ 
+cat guns.txt
+She's got a smile it seems to me
+Reminds me of childhood memories
+Where everything
+Was as fresh as the bright blue sky
+Now and then when I see her face
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+%15
+\begin{frame}[fragile]{High-level input and output}
+  \scriptsize
+  \begin{columns}[T]
+    \column{0.8\textwidth}
+      \begin{exampleblock}{\textattachfile{read2.c}{read2.c} -- Every word in separate strings}
+        \vspace{-.3cm}
+        \lstinputlisting[style=c]{read2.c}
+        \vspace{-.3cm}
+      \end{exampleblock}
+    \column{0.2\textwidth}
+      \begin{block}{Output}
+        \begin{verbatim}
+She's
+got
+a
+smile
+it
+seems
+to
+me
+Reminds
+me
+of
+childhood
+memories
+Where
+everything
+Was
+as
+fresh
+as
+\end{verbatim}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+%16
+\begin{frame}{High-level input and output}
+  Formatted reading (scanning)\\
+  \footnotesize
+  \texttt{int fscanf(FILE *stream, const char *format, ...);} \\
+  \begin{description}[mm]
+    \item[Return value] \hfill \\
+      The number of read, converted and stored elements or \texttt{EOF} in case of reaching the end of file or error
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier
+  \end{description}
+\end{frame}
+
+%17
+\begin{frame}[fragile]{High-level input and output}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{read3.c}{read3.c} -- Reading whole lines}
+    \vspace{-.3cm}
+    \lstinputlisting[style=c]{read3.c}
+    \vspace{-.3cm}
+  \end{exampleblock}
+\end{frame}
+
+%18
+\begin{frame}{High-level input and output}
+  Reading whole lines\\
+  \footnotesize
+  \texttt{char *fgets(char *s, int size, FILE *stream);} \\
+  \begin{description}[mm]
+    \item[Return value] \hfill \\
+      The address of the character buffer (\texttt{s}) or \texttt{NULL} in case of reaching the end of file or error
+    \item[\texttt{s}] \hfill \\
+      The address of the buffer. \texttt{fgets} stores at most \texttt{size}-1 characters. The terminating null character is always included and even the new line character, if the line contained it
+    \item[\texttt{size}] \hfill \\
+      Size of the buffer
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier
+  \end{description}
+\end{frame}
+
+%19
+\begin{frame}[fragile]{High-level input and output}
+  \small
+  \begin{exampleblock}{\textattachfile{write1.c}{write1.c} -- Writing lines}
+    \lstinputlisting[style=c,linerange={1-11}]{write1.c}
+  \end{exampleblock}
+\end{frame}
+
+%20
+\begin{frame}[fragile]{High-level input and output}
+  \small
+  \begin{exampleblock}{\textattachfile{write1.c}{write1.c} -- Writing lines}
+    \lstinputlisting[style=c,linerange={16-30},firstnumber=16]{write1.c}
+  \end{exampleblock}
+\end{frame}
+
+%21
+\begin{frame}[fragile]{High-level input and output}
+  \small
+  \begin{exampleblock}{\textattachfile{copy1.c}{copy1.c} -- Copy file character by character}
+    \vspace{-.2cm}
+    \lstinputlisting[style=c,linerange={1-14}]{copy1.c}
+    \vspace{-.2cm}
+  \end{exampleblock}
+\end{frame}
+
+%22
+\begin{frame}[fragile]{High-level input and output}
+  \begin{exampleblock}{\textattachfile{copy1.c}{copy1.c} -- Copy file character by character}
+    \lstinputlisting[style=c,linerange={15-25},firstnumber=15]{copy1.c}
+  \end{exampleblock}
+\end{frame}
+
+%23
+\begin{frame}[fragile]{High-level input and output}
+  \footnotesize
+  \begin{exampleblock}{\textattachfile{copy2.c}{copy2.c} -- Copy by block}
+    \lstinputlisting[style=c,linerange={1-14}]{copy2.c}
+  \end{exampleblock}
+\end{frame}
+
+%24
+\begin{frame}[fragile]{High-level input and output}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{copy2.c}{copy2.c} -- Copy by block}
+    \lstinputlisting[style=c,linerange={15-30},firstnumber=15]{copy2.c}
+  \end{exampleblock}
+\end{frame}
+
+%25
+\begin{frame}{High-level input and output}
+  Reading blocks\\
+  \footnotesize
+  \texttt{size\_t fread(void *ptr, size\_t size, size\_t nmemb, FILE *stream);} \\
+  \normalsize
+  Writing blocks\\
+  \footnotesize
+  \texttt{size\_t fwrite(const void *ptr, size\_t size, size\_t nmemb, \\ \qquad FILE *stream);} \\
+  \begin{description}[mm]
+    \item[Return value] \hfill \\
+      The number of read/written blocks
+    \item[\texttt{ptr}] \hfill \\
+      Address of buffer (its size must be at least \texttt{size*nmemb})
+    \item[\texttt{size}] \hfill \\
+      Size of a block
+    \item[\texttt{nmemb}] \hfill \\
+      Number of blocks to be processed at once
+    \item[\texttt{stream}] \hfill \\
+      Stream identifier
+  \end{description}
+\end{frame}
+
+%26
+\begin{frame}{High-level input and output}
+  \footnotesize
+  \begin{alertblock}{Copy by character}
+time ./copy1 bigfile.dat copy.dat\\
+
+real    \kiemel{5m33}.072s\\
+user    4m54.301s\\
+sys     0m19.405s\\  
+  \end{alertblock}
+  \begin{block}{Copy by block}
+time ./copy2 bigfile.dat copy.dat\\
+
+real    \kiemel{0m53}.501s\\
+user    0m0.212s\\
+sys     0m12.795s\\
+  \end{block}
+  \begin{block}{Copy with OS utility}
+time cp bigfile.dat copy.dat\\
+
+real    \kiemel{0m50}.821s\\
+user    0m0.102s\\
+sys     0m12.247s
+  \end{block}
+\end{frame}
+
+%27
+\begin{frame}{Bit-level operators}
+  In order of priority:
+  \begin{description}[mmm]
+    \item[\textasciitilde] one's complement
+    \item[<{<}] shift to left
+    \item[>{>}] shift to right
+    \item[\&] and
+    \item[\textasciicircum] exclusive or
+    \item[|] (permissive) or
+  \end{description}
+  They can be used only with \kiemel{integer} data!
+\end{frame}
+
+%28
+\begin{frame}{One's complement}
+  \begin{itemize}
+    \item performs integer promotion, if needed
+    \item the type of the result is the converted type
+  \end{itemize}
+  \small
+  \begin{exampleblock}{\textattachfile{not.c}{not.c} -- Example (assuming 32 bit \texttt{int}s)}
+    \lstinputlisting[style=c]{not.c}
+  \end{exampleblock}
+\end{frame}
+
+%29
+\begin{frame}{Shift}
+  \begin{itemize}
+    \item \emph{op1<{<}op2} and \emph{op1>{>}op2}
+    \item Shifting the bits of \emph{op1} by \emph{op2} positions (0 bits come in from the right, 0 (\texttt{unsigned}) or the value of the bit indicating the sign (\texttt{signed}) come from the left according to the sign handling of \emph{op1})
+    \item Operands are integers
+    \item Performs integer promotion if needed
+    \item The type of the result is the type of the converted type of \emph{op1}
+    \item If \emph{op2}{<}0 or \emph{op2}$\geq$the size of \emph{op1} in bits 
+$\to$ \kiemel{undefined result}
+    \item If it does not cause overrun then $op\mathit{1}<<op\mathit{2} \equiv op\mathit{1}*2^{op\mathit{2}}$
+    \item The integer part of $op\mathit{1}/2^{op\mathit{2}} \equiv op\mathit{1}>>op\mathit{2}$
+  \end{itemize}
+\end{frame}
+
+%30
+\begin{frame}{Shift}
+  \small
+  \begin{exampleblock}{\textattachfile{shift.c}{shift.c} -- Example (assuming 32 bit \texttt{int}s)}
+    \lstinputlisting[style=c]{shift.c}
+  \end{exampleblock}
+\end{frame}
+
+%31
+\begin{frame}{Rotate}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{rotate.c}{rotate.c} -- Example (assuming 32 bit \texttt{int}s)}
+    \vspace{-.2cm}
+    \lstinputlisting[style=c,linerange={1-19}]{rotate.c}
+    \vspace{-.2cm}
+  \end{exampleblock}
+\end{frame}
+
+%32
+\begin{frame}[fragile]{Rotate}
+  \scriptsize
+  \begin{exampleblock}{\textattachfile{rotate.c}{rotate.c} -- Example (assuming 32 bit \texttt{int}s)}
+    \lstinputlisting[style=c,linerange={21-30},firstnumber=21]{rotate.c}
+  \end{exampleblock}
+  \begin{block}{Output}
+    \begin{verbatim}
+Original number:                10000000000000000000000000000001
+Rotated to the left by 1 bit:   00000000000000000000000000000011
+Rotated to the left by 4 bits:  00000000000000000000000000011000
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+%33
+\begin{frame}[fragile]{Bit-level and (\&), exclusive or (\textasciicircum), or (|)}
+  \begin{itemize}
+    \item Implicit type conversion is performed, if needed
+    \item Result is in the converted type
+    \item \kiemel{Watch out!} If a==1 and b==2 then a\&\&b==1, but a\&b==0
+  \end{itemize}
+  \begin{center}
+    \footnotesize
+    \begin{tabular}{ccccc}
+    \emph{op1} & \emph{op2} & \emph{op1}\&\emph{op2} & \emph{op1}\textasciicircum\emph{op2} & \emph{op1}|\emph{op2}\\ \hline
+    0 & 0 & 0 & 0 & 0\\
+    0 & 1 & 0 & 1 & 1\\
+    1 & 0 & 0 & 1 & 1\\
+    1 & 1 & 1 & 0 & 1
+    \end{tabular}
+  \end{center}
+  \normalsize
+  \begin{columns}
+    \column{.3\textwidth}
+      \begin{exampleblock}{Clearing bits}
+        \begin{verbatim}
+ 0111 1110
+&1100 0011
+ ---------
+ 0100 0010
+\end{verbatim}
+      \end{exampleblock}
+    \column{.3\textwidth}
+      \begin{exampleblock}{Zeroing}
+        \begin{verbatim}
+ 0101 0101
+^0101 0101
+ ---------
+ 0000 0000
+\end{verbatim}
+      \end{exampleblock}
+    \column{.3\textwidth}
+      \begin{exampleblock}{Setting bits}
+        \begin{verbatim}
+ 0011 1100
+|1100 0101
+ ---------
+ 1111 1101
+\end{verbatim}
+      \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\end{document}
