@@ -32,7 +32,7 @@ void printArray(const int* a, int n) {
 }
 
 int main(void) {
-  int total; // we have so many numbers in total
+  int total; // array size
   int* numbers = read(&total);
   bubble(numbers, total);
   printf("After sorting:\n");

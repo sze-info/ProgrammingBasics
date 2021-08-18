@@ -93,7 +93,7 @@ After sorting:
       \end{itemize}
     \item The return value is NULL in case of an error $\to$ should be checked
     \item Freeing memory: \texttt{void free(void *ptr);}
-    \item The same meory area cannot be freed several times
+    \item The same memory area cannot be freed several times
     \item Freeing NULL does not cause problems
   \end{itemize}
 \end{frame}
@@ -110,9 +110,16 @@ After sorting:
 
 %8
 \begin{frame}{Sorting numbers}
-  \begin{exampleblock}{\textattachfile{bubble6.c}{bubble6.c}}
-    \lstinputlisting[style=c,linerange={34-42},firstnumber=34]{bubble6.c}
-  \end{exampleblock}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exampleblock}{\textattachfile{bubble6.c}{bubble6.c}}
+        \lstinputlisting[style=c,linerange={34-42},firstnumber=34]{bubble6.c}
+      \end{exampleblock}    
+    \column{0.4\textwidth}
+    \begin{center}
+      \includegraphics{bubble6.pdf}
+    \end{center}
+  \end{columns}
 \end{frame}
 
 %9
@@ -136,11 +143,18 @@ After sorting:
 
 %11
 \begin{frame}{Student register}
-  \footnotesize
-  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
-    \lstinputlisting[style=c,linerange={6-9},firstnumber=6]{students1.c}
-    \lstinputlisting[style=c,linerange={72-81},firstnumber=72]{students1.c}
-  \end{exampleblock}
+  \begin{columns}[T]
+    \column{.5\textwidth}
+      \footnotesize
+      \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+        \lstinputlisting[style=c,linerange={6-9},firstnumber=6]{students1.c}
+        \lstinputlisting[style=c,linerange={72-81},firstnumber=72]{students1.c}
+      \end{exampleblock}
+    \column{.4\textwidth}
+      \begin{center}
+        \includegraphics[width=\textwidth]{students1.pdf}
+      \end{center}
+  \end{columns}
 \end{frame}
 
 %12
@@ -161,11 +175,25 @@ After sorting:
 \end{frame}
 
 %14
-\begin{frame}{Student register}
-  \footnotesize
-  \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
-    \lstinputlisting[style=c,linerange={59-70},firstnumber=59]{students1.c}
-  \end{exampleblock}
+\begin{frame}[fragile]{Student register}
+  \begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+      \footnotesize
+      \begin{exampleblock}{\textattachfile{students1.c}{students1.c}}
+        \lstinputlisting[style=c,linerange={59-70},firstnumber=59]{students1.c}
+      \end{exampleblock}          
+    \end{column}
+    \begin{column}{0.25\textwidth}
+  \begin{verbatim}
+    Baby Doe 3
+   James Doe 4
+    Jane Doe 4
+    John Doe 4
+    Judy Doe 5
+Precious Doe 2 
+\end{verbatim}          
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %15
@@ -216,9 +244,11 @@ After sorting:
 
 %19
 \begin{frame}[fragile]{Sorting numbers}
-  \fontsize{7}{8} \selectfont
-  \begin{block}{Output}
-    \begin{verbatim}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \fontsize{7}{8} \selectfont
+      \begin{block}{Output}
+\begin{verbatim}
 Enter non-negative numbers
       [Initial memory allocation]
       [Used: 0, Array size: 1]
@@ -243,7 +273,12 @@ Number #8: -1
 After sorting:
 0       1       2       3       4       5       6
 \end{verbatim}
-  \end{block}
+      \end{block}
+    \column{0.45\textwidth}
+    \begin{center}
+      \includegraphics[width=\textwidth]{bubble7.pdf}
+    \end{center}
+  \end{columns}
 \end{frame}
 
 %20
@@ -257,7 +292,7 @@ After sorting:
   \begin{exampleblock}{\textattachfile{rectangle3.c}{rectangle3.c}}
     \scriptsize
     \vspace{-.3cm}
-    \lstinputlisting[style=c,linerange={91-98},firstnumber=91]{rectangle3.c}
+    \lstinputlisting[style=c,linerange={93-100},firstnumber=91]{rectangle3.c}
     \vspace{-.3cm}
   \end{exampleblock}
 \end{frame}
