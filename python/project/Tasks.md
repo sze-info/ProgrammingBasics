@@ -1,0 +1,14 @@
+# Tasks
+
+1. Create class for a city map. The map is represented by a graph. The vertices represent places or intersections in the city, the edges represent road sections among them. The weight of edges express the length of road sections. Create a class for the map, provide methods to add, remove or get current vertices, edges including their weights. Prepare your map to be able to store and retrieve arbitrary additional information about vertices and edges (eg. geographical location in a dictionary, i.e. horizontal and vertical coordinates on the canvas). Your class must be able to support traffic lights in intersections.
+2. Create class for car navigation. Cars must respect traffic rules, eg. they have to stop if the traffic light is red or if they had no yield. For the sake of simplicity, they are not allowed to overtake each other and they move with constant speed on the roads. Cars have to keep distance from the one in front of them. Provide methods for setting initial position and destination, getting current position, etc. Use one the following algorithms to navigate on the map:
+   - [Floyd–Warshall algorithm](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm)
+   - [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+   - [A* search algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
+   - [Bellman–Ford algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
+
+3. Create a specialized class for trucks spreading goods. These have to visit predefined points on the map by taking the shortest route. This is practically the [Travelling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem). Choose one of the possible approaches:
+   - [Held–Karp algorithm](https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm)
+   - [Nearest neighbour algorithm](https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm)
+   - [Microbial Genetic Algorithm](https://users.sussex.ac.uk/~inmanh/MicrobialGA_ECAL2009.pdf). You may need some of the techniques developed for Genetic Algorithms, eg. [PMX](https://blog.x5ff.xyz/blog/ai-rust-javascript-pmx/), [OX](https://mat.uab.cat/~alseda/MasterOpt/GeneticOperations.pdf) or [CX](https://www.rubicite.com/Tutorials/GeneticAlgorithms/CrossoverOperators/CycleCrossoverOperator.aspx).
+4. Visualize tha map including cars, traffic lights, etc. Communicate with the participants (map, cars), get their current state (color of a traffic light, position of cars, etc.) and show them. Indicate when they can make decisions and refresh the user interface according to the decisions (eg. in what direction will to car continue its journey).
